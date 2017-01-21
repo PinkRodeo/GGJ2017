@@ -13,7 +13,7 @@ public class zWave : MonoBehaviour {
 	void Start () {
 		trail = gameObject.GetComponent<LineRenderer> ();
 
-		trail.numPositions = 36;
+		trail.numPositions = 32;
 
 		int ii = 0;
 		for (ii = 0; ii < trail.numPositions; ii++) {
