@@ -2,27 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeechController : MonoBehaviour {
+public class SpeechController {
 
-	GUIText guiText;
+	public GUIText guiText;
 
 	string currentSentence = "";
 	int currentIndex = 0;
 	float rollingIndex = 0.0f;
 	float textSpeed = 1.0f;
 	string lastChar = "";
-	public AudioClip[] audioClips;
+	public AudioClip[] audioClips = {};
 	AudioSource source;
 
-	// Use this for initialization
-	void Start () {
-		guiText = gameObject.GetComponent<GUIText> ();
-
-		Say ("Lorum Ipsum Dolor Sit Amet");
-	}
-	
 	// Update is called once per frame
-	void Update () {
+	public void Update () {
 		bool rewrite = false;
 		rollingIndex += Time.deltaTime * 20f * textSpeed;
 
@@ -66,11 +59,11 @@ public class SpeechController : MonoBehaviour {
 	}
 
 	public void PlaySound(){
-		//TODO
-		AudioClip clip = audioClips[Mathf.FloorToInt(Random.value * audioClips.Length)];
-		if (!source) {
+		if (audioClips.Length < 1 || !source){
 			return;
 		}
+
+		AudioClip clip = audioClips[Mathf.FloorToInt(Random.value * audioClips.Length)];
 		source.clip = clip;
 		source.Play ();
 	}
