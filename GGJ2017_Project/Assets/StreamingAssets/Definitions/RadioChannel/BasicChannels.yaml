@@ -4,3 +4,9 @@
 
     personDefinitionKey: "PERSON_DEFAULT"
 
+
+  "RC_INTRO_STATION":
+    channelName: "The intro station"
+
+    personDefinitionKey: "PERSON_INTROBOT"
+

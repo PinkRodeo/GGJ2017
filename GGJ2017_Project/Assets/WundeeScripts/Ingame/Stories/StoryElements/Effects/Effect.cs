@@ -42,6 +42,10 @@ namespace Wundee.Stories
 		protected Condition[] conditions;
 		private Definition<Condition>[] _conditionDefinitions;
 
+		protected Effect[] elseEffects;
+		private Definition<Effect>[] _elseEffectDefinitions;
+
+
 		private KeyValuePair<Definition<Condition>[], Definition<Effect>[]>[] _conditionEffectPairsDefinition;
 		private KeyValuePair<Condition[], Effect[]>[] _conditionEffectPairs;
 
@@ -55,6 +59,15 @@ namespace Wundee.Stories
 
 				_effectDefinitions = EffectDefinition.ParseDefinitions(parameters[D.EFFECTS], definition.definitionKey);
 				_conditionDefinitions = ConditionDefinition.ParseDefinitions(parameters[D.CONDITIONS], definition.definitionKey);
+
+				if (parameters.Keys.Contains("elseEffects"))
+				{
+					_elseEffectDefinitions = EffectDefinition.ParseDefinitions(parameters["elseEffects"], definition.definitionKey);
+				}
+				else
+				{
+					_elseEffectDefinitions = new Definition<Effect>[0];
+				}
 			}
 			else
 			{
@@ -83,6 +96,7 @@ namespace Wundee.Stories
 			{
 				retValue.conditions = _conditionDefinitions.GetConcreteTypes(parent);
 				retValue.effects = _effectDefinitions.GetConcreteTypes(parent);
+				retValue.elseEffects = _elseEffectDefinitions.GetConcreteTypes(parent);
 			}
 			else if (_type == ConditionalType.MultiplePairs)
 			{
@@ -106,6 +120,10 @@ namespace Wundee.Stories
 				if (conditions.CheckConditions())
 				{
 					effects.ExecuteEffects();
+				}
+				else
+				{
+					elseEffects.ExecuteEffects();
 				}
 			}
 			else

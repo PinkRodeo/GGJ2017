@@ -29,6 +29,37 @@
             - type: "PrintEffect"
               params: "You're a jerk!"
 
- 
+  "PERSON_INTROBOT":
+    voiceKey: "Robot"
+
+    onStartRewards:
+      - "EFFECT_INTROBOT_1"
+
+
+
+  "PERSON_INFO_BOT":
+    voiceKey: "Robot"
+
+    onStartRewards:
+      - type: "ConditionalEffect"
+        params:
+          statements:
+            - conditions:
+                - type: "WorldFlagCondition"
+                  params: {flag: "INFOBOT_INTRO_GIVEN", operator: "NotEquals"}
+              effects:
+                - type: "TransmitTextEffect"
+                  params: 
+                    text: "I am InfoBot. I am the information hub for this space."
+                    onCompleteEffects: 
+                      - type: "AddWorldFlagEffect"
+                        params: {flag: "INFOBOT_INTRO_GIVEN"}
+            - conditions: []
+              effects:
+                - "EFFECT_INTROBOT_QUEUE"
+
+
+
+
 
 
