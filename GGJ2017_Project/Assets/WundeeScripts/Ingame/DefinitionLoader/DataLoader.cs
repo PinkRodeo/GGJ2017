@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 
 using LitJson;
+using RadioWaves;
 using Wundee.Stories;
 
 using YamlDotNet.Core;
@@ -18,15 +19,15 @@ namespace Wundee
 {
 	public class DataLoader
 	{
-		public DefinitionLoader<SettlementDefinition, Settlement> settlementDefinitions; 
-
 		public DefinitionLoader<StoryDefinition, Story> storyDefinitions;
 		public DefinitionLoader<StoryNodeDefinition, StoryNode> storyNodeDefinitions;
 		public DefinitionLoader<StoryTriggerDefinition, StoryTrigger> storyTriggerDefinitions;
 
 		public DefinitionLoader<EffectDefinition, Effect> effectDefinitions;
 		public DefinitionLoader<ConditionDefinition, Condition> conditionDefinitions;
-		
+
+
+		public DefinitionLoader<RadioChannelDefinition, RadioChannel> radioChannelDefinitions;
 
 		public Dictionary<Type, object> definitionLoaderMapper;
 
@@ -37,18 +38,17 @@ namespace Wundee
 
 		public DataLoader()
 		{
-			settlementDefinitions = new DefinitionLoader<SettlementDefinition, Settlement>(this);
-
 			storyDefinitions = new DefinitionLoader<StoryDefinition, Story>(this);
 			storyNodeDefinitions = new DefinitionLoader<StoryNodeDefinition, StoryNode>(this);
 			storyTriggerDefinitions = new DefinitionLoader<StoryTriggerDefinition, StoryTrigger>(this);
 
 			effectDefinitions = new DefinitionLoader<EffectDefinition, Effect>(this);
 			conditionDefinitions = new DefinitionLoader<ConditionDefinition, Condition>(this);
-			
-			this.definitionLoaderMapper = new Dictionary<Type, object>(10);
 
-			definitionLoaderMapper[typeof(SettlementDefinition)] = settlementDefinitions;
+			radioChannelDefinitions = new DefinitionLoader<RadioChannelDefinition, RadioChannel>(this);
+
+
+			this.definitionLoaderMapper = new Dictionary<Type, object>(10);
 
 			definitionLoaderMapper[typeof (StoryDefinition)] = storyDefinitions;
 			definitionLoaderMapper[typeof (StoryNodeDefinition)] = storyNodeDefinitions;
@@ -56,6 +56,9 @@ namespace Wundee
 
 			definitionLoaderMapper[typeof (EffectDefinition)] = effectDefinitions;
 			definitionLoaderMapper[typeof (ConditionDefinition)] = conditionDefinitions;
+
+			definitionLoaderMapper[typeof(RadioChannelDefinition)] = radioChannelDefinitions;
+
 
 
 			jsonSerializer = new Serializer(SerializationOptions.JsonCompatible);
@@ -80,8 +83,6 @@ namespace Wundee
 
 		public void ParseDefinitions()
 		{
-			settlementDefinitions.AddFolder("Settlement");
-
 			storyDefinitions.AddFolder("Story");
 			storyNodeDefinitions.AddFolder("StoryNode");
 			storyTriggerDefinitions.AddFolder("StoryTrigger");
@@ -90,6 +91,9 @@ namespace Wundee
 			effectDefinitions.AddFolder("Reward");
 
 			conditionDefinitions.AddFolder("Condition");
+
+			radioChannelDefinitions.AddFolder("RadioChannel");
+
 		}
 
 		public JsonData GetJsonDataFromFile(string filePath)

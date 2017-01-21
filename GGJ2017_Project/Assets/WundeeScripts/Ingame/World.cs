@@ -79,6 +79,7 @@ namespace Wundee
 
 		public void GenerateSettlements()
 		{
+		/*
 			var settlementDefinition = Game.instance.definitions.settlementDefinitions["SETTLEMENT_DEFAULT_01"];
 
 			var random = new System.Random();
@@ -93,6 +94,7 @@ namespace Wundee
 					_settlements.Add(newSettlement);
 				}
 			}
+			*/
 		}
 
 		public Vector2 GetShortestLineTo(Vector2 originPos, Vector2 targetPos)

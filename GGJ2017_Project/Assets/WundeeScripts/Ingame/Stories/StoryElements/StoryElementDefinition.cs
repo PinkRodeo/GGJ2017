@@ -35,7 +35,7 @@ namespace Wundee.Stories
 
 			if (storyNodeParent == null)
 			{
-				Logger.Log("[StoryElementDefinition] Invalid parent StoryNode provided for new storyElement " + definitionKey);
+				//Logger.Log("[StoryElementDefinition] Invalid parent StoryNode provided for new storyElement " + definitionKey);
 			}
 
 			var newConcreteType = masterCopy.GetClone(storyNodeParent);

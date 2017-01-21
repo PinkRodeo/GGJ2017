@@ -100,6 +100,9 @@ namespace Wundee
 		public const string REWARDS_ON_START = "onStartRewards";
 		public const string REWARDS_ON_COMPLETE = "onCompleteRewards";
 
+		public const string REWARDS_ON_TUNE = "onTuneRewards";
+
+
 		// StoryElements
 		public const string TYPE = "type";
 		public const string PARAMS = "params";
