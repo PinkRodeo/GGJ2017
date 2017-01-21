@@ -30,14 +30,14 @@ namespace RadioWaves
 
 		private void OnTriggerEnter(Collider p_Collider)
 		{
-			Debug.Log("Col enter");
-
 			var radioChannel = p_Collider.GetComponent<RadioChannel>();
 
 			if (radioChannel)
 			{
 				Debug.Log("Player tuned into: " + p_Collider.gameObject.name);
 				m_ConnectedChannels.Add(radioChannel);
+
+				radioChannel.TuneIn();
 			}
 		}
 
@@ -61,8 +61,6 @@ namespace RadioWaves
 
 		private void Update()
 		{
-			Debug.Log("Update");
-
 			var localPos = transform.localPosition;
 			var speed = 2f;
 

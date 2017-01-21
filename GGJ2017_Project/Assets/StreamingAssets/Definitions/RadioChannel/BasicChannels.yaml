@@ -1,0 +1,11 @@
+---
+  "RC_DEFAULT":
+    channelName: "The default channel"
+    
+    onStartRewards:
+      - type: "PrintEffect"
+        params: "StartReward"
+
+    onTuneRewards:
+      - type: "PrintEffect"
+        params: "TuneReward"
