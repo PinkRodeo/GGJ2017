@@ -27,7 +27,7 @@ public class MidiController {
 		
 
 	void FlushCombo(){
-		lastNotes = new List<string> ();
+		lastNotes.Clear ();
 	}
 
 	public void AddComboListener (string[] combo, ComboDelegate callback) {
@@ -36,6 +36,10 @@ public class MidiController {
 		listener.callback = callback;
 
 		comboListeners.Add (listener);
+	}
+
+	public void ClearComboListeners (){
+		comboListeners.Clear ();
 	}
 
 	void OnNoteOn(MidiJack.MidiChannel channel, int noteNumber, float velocity){
