@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void ComboDelegate();
+public delegate void KnobDelegate(float value);
 
 public class ComboListener {
 	public string[] combo;
 	public ComboDelegate callback;
 }
 
+public class KnobListener {
+	public int knobNumber;
+	public KnobDelegate callback;
+}
+
 public class MidiController {
 
 	List<string> lastNotes;
 	List<ComboListener> comboListeners;
-
-	public Transform tuner;
+	List<KnobListener> knobListeners;
 
 	// Use this for initialization
 	public MidiController () {
@@ -23,6 +28,7 @@ public class MidiController {
 
 		lastNotes = new List<string> ();
 		comboListeners = new List<ComboListener> ();
+		knobListeners = new List<KnobListener> ();
 	}
 		
 
@@ -67,7 +73,25 @@ public class MidiController {
 		}
 	}
 
+	public void AddKnobListener (int knobNumber, KnobDelegate callback){
+		KnobListener listener = new KnobListener ();
+
+		listener.knobNumber = knobNumber;
+		listener.callback = callback;
+
+		knobListeners.Add (listener);
+	}
+
 	void OnKnob(MidiJack.MidiChannel channel, int knobNumber, float knobValue){
+		int ii;
+		for (ii = 0; ii < knobListeners.Count; ii++) {
+			if (knobListeners [ii].knobNumber == knobNumber) {
+				knobListeners [ii].callback (knobValue);
+			}
+		}
+
+		return;
+
 		knobValue = Mathf.Round (knobValue * 127);
 		var pos = tuner.localPosition;
 

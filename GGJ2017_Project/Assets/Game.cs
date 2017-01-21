@@ -11,13 +11,11 @@ namespace HAM
 		public static SpeechController speechController;
 
 		public GUIText guiText;
-		public Transform tuner;
 
 		void Start ()
 		{
 			//midiController = gameObject.AddComponent<MidiController> ();
 			midiController = new MidiController();
-			midiController.tuner = tuner;
 
 			speechController = new SpeechController ();
 			speechController.guiText = guiText;
