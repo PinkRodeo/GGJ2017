@@ -2,12 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using Wundee;
 using Wundee.Stories;
+using HAM;
 
 namespace RadioWaves
 {
 	[RequireComponent(typeof(SphereCollider))]
+	[RequireComponent(typeof(AudioSource))]
 	public class RadioChannel : MonoBehaviour
 	{
 		public const string RADIOCHANNEL_TAG = "RadioChannelTag";
@@ -18,6 +21,7 @@ namespace RadioWaves
 
 		private Transform m_Transform;
 		private SphereCollider m_SphereCollider;
+		private AudioSource m_AudioSource;
 
 		public string DefinitionKey = "RC_DEFAULT";
 
@@ -44,12 +48,17 @@ namespace RadioWaves
 			m_SphereCollider = GetComponent<SphereCollider>();
 			m_Transform = transform;
 			m_SphereCollider.radius = m_Range;
+
+			m_AudioSource = GetComponent<AudioSource> ();
+			m_AudioSource.playOnAwake = false;
+			m_AudioSource.minDistance = m_Range*0.75f;
+			m_AudioSource.maxDistance = m_Range;
+			m_AudioSource.spatialBlend = 1.0f;
 		}
 
 		private void Start()
 		{
 			Wundee.Game.instance.definitions.radioChannelDefinitions[DefinitionKey].MakeConcreteType(this);
-			
 		}
 
 		// Update is called once per frame

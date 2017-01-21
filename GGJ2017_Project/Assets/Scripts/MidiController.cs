@@ -90,8 +90,6 @@ public class MidiController {
 			}
 		}
 
-		Debug.Log (knobNumber);
-
 		return;
 	}
 

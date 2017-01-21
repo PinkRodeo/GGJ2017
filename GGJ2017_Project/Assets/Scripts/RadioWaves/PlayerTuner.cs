@@ -44,6 +44,8 @@ namespace RadioWaves
 
 				radioChannel.TuneIn();
 			}
+
+			HAM.Game.SetStaticVolume (0.2f);
 		}
 
 		private void OnTriggerExit(Collider p_Collider)
@@ -54,6 +56,10 @@ namespace RadioWaves
 			{
 				Debug.Log("Player tuned out of: " + p_Collider.gameObject.name);
 				m_ConnectedChannels.Remove(radioChannel);
+			}
+
+			if (m_ConnectedChannels.Count == 0) {
+				HAM.Game.SetStaticVolume (1.0f);
 			}
 		}
 
