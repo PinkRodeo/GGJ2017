@@ -12,7 +12,7 @@ namespace Wundee
 		private List<Entity> _entities; 
 
 		private List<Habitat> _habitats;
-		private List<Settlement> _settlements;
+		private List<Person> _settlements;
 
 		private HashSet<ushort> _worldFlags = new HashSet<ushort>();
 
@@ -22,7 +22,7 @@ namespace Wundee
 			get { return _habitats; }
 		}
 
-		public List<Settlement> settlements
+		public List<Person> settlements
 		{
 			get { return _settlements; }
 		}
@@ -31,7 +31,7 @@ namespace Wundee
 		{
 			this._entities = new List<Entity>();
 			this._habitats = new List<Habitat>();
-			this._settlements = new List<Settlement>();
+			this._settlements = new List<Person>();
 
 
 			var gameParams = Game.instance.@params;

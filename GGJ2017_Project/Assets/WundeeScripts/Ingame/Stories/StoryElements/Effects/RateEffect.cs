@@ -11,7 +11,7 @@ namespace Wundee.Stories
 
 	}
 
-
+	/*
 	public class NeedRateEffect : Effect, IRateEffect
 	{
 		private double _rate;
@@ -45,6 +45,6 @@ namespace Wundee.Stories
 			parentStoryNode.parentStory.parentSettlement.needs[_needIndex].amount += _amount;
 		}
 	}
-
+	*/
 }
 
