@@ -18,6 +18,10 @@ public class SpeechController {
 	AudioSource source;
 
 	SpeechCallback onComplete = null;
+	SpeechCallback onBreakoff = null;
+
+	private bool bSpeechCompleted = false;
+
 
 	// Update is called once per frame
 	public void Update () {
@@ -44,17 +48,25 @@ public class SpeechController {
 				PlaySound ();
 			}
 
-			if (currentIndex == currentSentence.Length && onComplete != null) {
-				onComplete ();
+			if (currentIndex == currentSentence.Length) {
+				if (onComplete != null)
+				{
+					onComplete ();
+				}
+				bSpeechCompleted = true;
 			}
 		}
 	}
 
-	public void Say(string text, SpeechCallback callback = null){
+	public void Say(string text, SpeechCallback onCompleteCallback = null, SpeechCallback onBreakoffCallback = null){
 		Clear ();
 		currentSentence = text;	
 		PlaySound ();
-		onComplete = callback;
+		
+		onComplete = onCompleteCallback;
+		onBreakoff = onBreakoffCallback;
+		
+		bSpeechCompleted = false;
 	}
 
 	public void Clear(){
@@ -63,7 +75,18 @@ public class SpeechController {
 		rollingIndex = 0.0f;
 		guiText.text = "";
 
+		if (bSpeechCompleted == false)
+		{
+			if (onBreakoff != null)
+			{
+				onBreakoff();
+			}
+		}
+
 		onComplete = null;
+		onBreakoff = null;
+		
+		bSpeechCompleted = true;
 	}
 
 	public void SetClips(AudioClip[] clips){

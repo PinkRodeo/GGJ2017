@@ -11,8 +11,14 @@
       - type: "PrintEffect"
         params: "TuneReward"
       - type: "TransmitTextEffect"
-        params: { text: "Sometimes I cry myself to sleep. It gets worse over time. Sometimes, I even long for the sweet release of death." }
-
+        params: 
+          text: "Sometimes I cry myself to sleep. It gets worse over time. Sometimes, I even long for the sweet release of death."
+          onCompleteEffects: 
+            - type: "PrintEffect"
+              params: "You listened to me, I appreciate that."
+          onBreakoffEffects: 
+            - type: "PrintEffect"
+              params: "You're a jerk!"
 
   "PERSON_DEFAULT_01":
     voiceKey : "A"

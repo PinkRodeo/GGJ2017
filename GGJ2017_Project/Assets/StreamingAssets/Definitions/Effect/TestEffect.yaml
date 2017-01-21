@@ -3,3 +3,13 @@
     type: "NullEffect"
     params: ""
 
+  "EFFECT_TRANSMIT_EXAMPLE":
+    type: "TransmitTextEffect"
+    params: 
+      text: "Sometimes I cry myself to sleep. It gets worse over time. Sometimes, I even long for the sweet release of death."
+      onCompleteEffects: 
+        - type: "PrintEffect"
+          params: "You listened to me, I appreciate that."
+      onBreakoffEffects: 
+        - type: "PrintEffect"
+          params: "You're a jerk!"
