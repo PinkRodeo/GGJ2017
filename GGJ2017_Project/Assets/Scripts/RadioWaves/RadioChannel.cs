@@ -15,13 +15,14 @@ namespace RadioWaves
 	{
 		public const string RADIOCHANNEL_TAG = "RadioChannelTag";
 
-		[Range(1f, 20f)] public float m_Range = 1f;
+		[Range(1f, 30f)] public float m_Range = 15f;
 
 		[HideInInspector] public Ether m_Ether;
 
 		private Transform m_Transform;
 		private SphereCollider m_SphereCollider;
 		private AudioSource m_AudioSource;
+		private AudioClip[] m_AudioClips;
 
 		public string DefinitionKey = "RC_DEFAULT";
 
@@ -30,6 +31,10 @@ namespace RadioWaves
 
 
 		public Person p_Person;
+
+		private float inTuneTimer = 0.0f;
+		private bool tunedIn = false;
+		private bool connected = false;
 
 		private void Reset()
 		{
@@ -54,17 +59,26 @@ namespace RadioWaves
 			m_AudioSource.minDistance = m_Range*0.75f;
 			m_AudioSource.maxDistance = m_Range;
 			m_AudioSource.spatialBlend = 1.0f;
+			m_AudioSource.spatialize = false;
+			m_AudioSource.dopplerLevel = 0.1f;
 		}
 
 		private void Start()
 		{
 			Wundee.Game.instance.definitions.radioChannelDefinitions[DefinitionKey].MakeConcreteType(this);
+			m_AudioClips = p_Person.GetAudioClips ();
 		}
 
 		// Update is called once per frame
 		void Update()
 		{
-
+			if (tunedIn && !connected) {
+				inTuneTimer += UnityEngine.Time.deltaTime;
+				if (inTuneTimer > 1.5f) {
+					connected = true;
+					p_Person.TuneIn();
+				}
+			}
 		}
 
 		void OnDrawGizmos()
@@ -75,7 +89,17 @@ namespace RadioWaves
 
 		public void TuneIn()
 		{
-			p_Person.TuneIn();
+			HAM.Game.speechController.SetSource (m_AudioSource);
+			HAM.Game.speechController.SetClips (m_AudioClips);
+
+			connected = false;
+			tunedIn = true;
+			inTuneTimer = 0.0f;
+		}
+
+		public void TuneOut()
+		{
+			tunedIn = false;
 		}
 	}
 }

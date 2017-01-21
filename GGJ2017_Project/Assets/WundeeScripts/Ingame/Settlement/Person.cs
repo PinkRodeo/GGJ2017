@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using RadioWaves;
 using Wundee.Stories;
+using UnityEngine;
 
 namespace Wundee
 {
@@ -20,11 +21,24 @@ namespace Wundee
 		private HashSet<ushort> _settlementFlags = new HashSet<ushort>();
 		public PersonDefinition definition;
 
-		public Person(RadioChannel p_RadioChannel)
+		private AudioClip[] audioClips;
+
+		public Person(RadioChannel p_RadioChannel, PersonDefinition p_Definition)
 		{
 			this.radioChannel = p_RadioChannel;
+			this.definition = p_Definition;
 
 			this.storyHolder = new StoryHolder(this);
+
+			string voiceFolder = "Voices/" + definition.voiceType;
+			Object[] assets = Resources.LoadAll (voiceFolder);
+			int ii;
+
+			audioClips = new AudioClip[assets.Length];
+
+			for (ii = 0; ii < assets.Length; ii++){
+				audioClips[ii] = assets[ii] as AudioClip;
+			};
 
 			
 			var needParams = Game.instance.@params.needParams;
@@ -41,6 +55,10 @@ namespace Wundee
 			*/
 
 			
+		}
+
+		public AudioClip[] GetAudioClips(){
+			return audioClips;
 		}
 
 		public void TuneIn()

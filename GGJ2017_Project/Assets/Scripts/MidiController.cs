@@ -62,6 +62,7 @@ public class MidiController {
 				int k = listener.combo.Length -1 - jj;
 				int p = lastNotes.Count - 1 - jj;
 
+				Debug.Log (lastNotes [p] + " - " + listener.combo [k]);
 				if (lastNotes [p] != listener.combo [k]) {
 					isComplete = false;
 					break;
@@ -93,23 +94,23 @@ public class MidiController {
 		return;
 	}
 
-	string[] letters = {"c","c#","d","d#","e","f","f#","g","g#","a","a#","b"};
+	private static readonly string[] NoteLetters = {"c","c#","d","d#","e","f","f#","g","g#","a","a#","b"};
 
-	string NoteToString(int note){
+	public static string NoteToString(int note){
 		note -= 48;
 
-		string letter = letters[note%12];
+		string letter = NoteLetters[note%12];
 		string number = Mathf.Ceil((note + 1.0f) / 12.0f).ToString();
 
 		return letter + number;
 	}
 
-	int StringToNote(string note){
+	public static int StringToNote(string note){
 		int ii;
-		string letter = note.Substring (0, note.Length - 1);
+		string letter = note.Substring (0, note.Length - 1).ToLower();
 		int number = int.Parse(note.Substring (note.Length - 1));
 		for (ii = 0; ii < 12; ii++) {
-			if (letters [ii] == letter) {
+			if (NoteLetters [ii] == letter) {
 				break;
 			}
 		}

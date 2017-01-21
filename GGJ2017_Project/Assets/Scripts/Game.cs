@@ -25,9 +25,9 @@ namespace HAM
 
 			//TESTS
 			string[] combo = { "e2", "e2", "e2", "c2", "e2", "g2" };
-			midiController.AddComboListener(combo, ComboTest);
+			//midiController.AddComboListener(combo, ComboTest);
 
-			speechController.Say("hello world");
+			speechController.Say("hello world", SpeechTest);
 
 			sStaticChannel = staticChannel;
 		}
@@ -40,6 +40,11 @@ namespace HAM
 		void ComboTest ()
 		{
 			Debug.Log("test combo entered");
+		}
+
+		void SpeechTest ()
+		{
+			Debug.Log("test speech completed");
 		}
 
 		public static void SetStaticVolume (float volume){
