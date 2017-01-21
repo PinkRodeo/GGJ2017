@@ -13,11 +13,18 @@ namespace Wundee
 
 		public string voiceType;
 
+		public string portraitKey;
+
+
+
 		public override void ParseDefinition(string definitionKey, JsonData jsonData)
 		{
 			this.definitionKey = definitionKey;
 
 			var keys = jsonData.Keys;
+
+			portraitKey = ContentHelper.ParseString(jsonData, D.PORTRAITKEY, "Portrait_1");
+
 
 			if (keys.Contains(D.REWARDS_ON_START))
 				this._onStartRewardDefinitions = EffectDefinition.ParseDefinitions(jsonData[D.REWARDS_ON_START], definitionKey);

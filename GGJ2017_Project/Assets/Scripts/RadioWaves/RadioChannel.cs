@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 using Wundee;
 using Wundee.Stories;
 using HAM;
+using UnityEditor;
 
 namespace RadioWaves
 {
@@ -74,7 +75,11 @@ namespace RadioWaves
 		{
 			if (tunedIn && !connected) {
 				inTuneTimer += UnityEngine.Time.deltaTime;
-				if (inTuneTimer > 0.8f) {
+				HAM.Game.speechController.transmissionUI.SetVisible(true);
+				HAM.Game.speechController.transmissionUI.TextContent = "";
+				HAM.Game.speechController.transmissionUI.PortraitTexture.overrideSprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Textures/Portraits/" + p_Person.definition.portraitKey + ".png", typeof(Sprite));
+
+				if (inTuneTimer > 1.5f) {
 					connected = true;
 					p_Person.TuneIn();
 				}

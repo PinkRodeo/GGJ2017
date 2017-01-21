@@ -90,6 +90,8 @@ namespace Wundee
 	public static class D
 	{
 		public static string TEXT = "text";
+		public static string PORTRAITKEY = "portraitKey";
+
 		// Stories
 		public const string START_NODE = "startNode";
 		public const string STORYTRIGGERS = "storyTriggers";

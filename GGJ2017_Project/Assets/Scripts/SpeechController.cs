@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using HAM;
 using UnityEngine;
 
 
@@ -7,7 +8,7 @@ using UnityEngine;
 public class SpeechController {
 	public delegate void SpeechCallback();
 
-	public GUIText guiText;
+	public TransmissionUI transmissionUI;
 
 	string currentSentence = "";
 	int currentIndex = 0;
@@ -48,7 +49,9 @@ public class SpeechController {
 		lastAudioTime += Time.deltaTime;
 
 		if (rewrite){
-			guiText.text = currentSentence.Substring (0, currentIndex);
+			transmissionUI.SetVisible(true);
+
+			transmissionUI.TextContent = currentSentence.Substring (0, currentIndex);
 
 			if (currentIndex == currentSentence.Length) {
 				if (onComplete != null)
@@ -78,7 +81,8 @@ public class SpeechController {
 		currentSentence = "";
 		currentIndex = 0;
 		rollingIndex = 0.0f;
-		guiText.text = "";
+		//transmissionUI.TextContent = "";
+		transmissionUI.SetVisible(false);
 
 		if (bSpeechCompleted == false)
 		{

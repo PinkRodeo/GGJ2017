@@ -12,8 +12,8 @@ namespace HAM
 		public static MidiController midiController;
 		public static SpeechController speechController;
 		private static AudioSource sStaticChannel;
-
-		public GUIText guiText;
+		
+		public TransmissionUI transmissionUI;
 
 		void Awake ()
 		{
@@ -21,13 +21,13 @@ namespace HAM
 			midiController = new MidiController();
 
 			speechController = new SpeechController ();
-			speechController.guiText = guiText;
-
+			speechController.transmissionUI = transmissionUI;
+			
 			//TESTS
-			string[] combo = { "e2", "e2", "e2", "c2", "e2", "g2" };
+			//string[] combo = { "e2", "e2", "e2", "c2", "e2", "g2" };
 			//midiController.AddComboListener(combo, ComboTest);
 
-			speechController.Say("hello world", SpeechTest);
+			//speechController.Say("hello world", SpeechTest);
 
 			sStaticChannel = staticChannel;
 		}
