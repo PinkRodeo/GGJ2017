@@ -41,11 +41,10 @@ namespace RadioWaves
 			{
 				Debug.Log("Player tuned into: " + p_Collider.gameObject.name);
 				m_ConnectedChannels.Add(radioChannel);
-
+				HAM.Game.SetStaticVolume (0.1f);
 				radioChannel.TuneIn();
-			}
 
-			HAM.Game.SetStaticVolume (0.2f);
+			}
 		}
 
 		private void OnTriggerExit(Collider p_Collider)
