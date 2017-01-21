@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void ComboDelegate();
+public delegate void NoteDelegate();
 public delegate void KnobDelegate(float value);
 
 public class ComboListener {
 	public string[] combo;
 	public ComboDelegate callback;
+}
+
+public class NoteListener {
+	public int note;
+	public NoteDelegate callback;
 }
 
 public class KnobListener {
@@ -19,6 +25,7 @@ public class MidiController {
 
 	List<string> lastNotes;
 	List<ComboListener> comboListeners;
+	List<NoteListener> noteListeners;
 	List<KnobListener> knobListeners;
 
 	// Use this for initialization
@@ -28,19 +35,8 @@ public class MidiController {
 
 		lastNotes = new List<string> ();
 		comboListeners = new List<ComboListener> ();
+		noteListeners = new List<NoteListener> ();
 		knobListeners = new List<KnobListener> ();
-	}
-
-	void FlushCombo(){
-		lastNotes.Clear ();
-	}
-
-	public void AddComboListener (string[] combo, ComboDelegate callback) {
-		ComboListener listener = new ComboListener ();
-		listener.combo = combo;
-		listener.callback = callback;
-
-		comboListeners.Add (listener);
 	}
 
 	public void Update(){
@@ -65,6 +61,26 @@ public class MidiController {
 		}
 	}
 
+	void FlushCombo(){
+		lastNotes.Clear ();
+	}
+
+	public void AddComboListener (string[] combo, ComboDelegate callback) {
+		ComboListener listener = new ComboListener ();
+		listener.combo = combo;
+		listener.callback = callback;
+
+		comboListeners.Add (listener);
+	}
+
+	public void AddNoteListener (string note, NoteDelegate callback){
+		NoteListener listener = new NoteListener ();
+		listener.note = StringToNote (note);
+		listener.callback = callback;
+
+		noteListeners.Add (listener);
+	}
+
 	public void ClearComboListeners (){
 		comboListeners.Clear ();
 	}
@@ -73,7 +89,6 @@ public class MidiController {
 		string name = NoteToString (noteNumber);
 		lastNotes.Add (name);
 
-		//TODO check for combos;
 		int ii;
 		int jj;
 		for (ii = comboListeners.Count - 1; ii >= 0; ii--) {
@@ -83,7 +98,6 @@ public class MidiController {
 				int k = listener.combo.Length -1 - jj;
 				int p = lastNotes.Count - 1 - jj;
 
-				Debug.Log (lastNotes [p] + " - " + listener.combo [k]);
 				if (lastNotes [p] != listener.combo [k]) {
 					isComplete = false;
 					break;
@@ -91,6 +105,13 @@ public class MidiController {
 			}
 			if (isComplete) {
 				listener.callback ();
+			}
+		}
+
+
+		for (ii = 0; ii < noteListeners.Count; ii++) {
+			if (noteListeners [ii].note == noteNumber) {
+				noteListeners [ii].callback ();
 			}
 		}
 	}
