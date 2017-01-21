@@ -13,9 +13,15 @@ namespace Wundee.Stories
 	{
 		private string _TextToTransmit;
 
+		protected Definition<Effect>[] _onCompleteEffects;
+		protected Definition<Effect>[] _onBreakoffEffects;
+
+
+
 		public override void ParseParams(JsonData parameters)
 		{
-			
+			var keys = parameters.Keys;
+
 
 			_TextToTransmit = ContentHelper.ParseString(parameters, D.TEXT, "MISSING_TEXT");
 			if (_TextToTransmit == "MISSING_TEXT")
@@ -24,15 +30,36 @@ namespace Wundee.Stories
 			}
 
 
+			if (keys.Contains(D.EFFECTS_ON_COMPLETE))
+				_onCompleteEffects = EffectDefinition.ParseDefinitions(parameters[D.EFFECTS_ON_COMPLETE], definition.definitionKey);
+			else
+				_onCompleteEffects = new Definition<Effect>[0];
+
+			if (keys.Contains(D.EFFECTS_ON_BREAKOFF))
+				_onBreakoffEffects = EffectDefinition.ParseDefinitions(parameters[D.EFFECTS_ON_BREAKOFF], definition.definitionKey);
+			else
+				_onBreakoffEffects = new Definition<Effect>[0];
+
 		}
 
 		public override void ExecuteEffect()
 		{
 			var testParent = parentStoryNode;
 
-			HAM.Game.speechController.Say(_TextToTransmit);
+			
 
-			//parentStoryNode.parentStory.parentPerson.radioChannel;
+			HAM.Game.speechController.Say(_TextToTransmit, 
+				() =>
+				{
+					parentStoryNode.parentStory.parentPerson.ExecuteEffectFromDefinition(ref _onCompleteEffects);
+				},
+				() =>
+				{
+					parentStoryNode.parentStory.parentPerson.ExecuteEffectFromDefinition(ref _onBreakoffEffects);
+				}
+			);
+
+			//.radioChannel;
 
 		}
 	}
