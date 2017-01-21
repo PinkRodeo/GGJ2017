@@ -23,37 +23,11 @@
                 effects: 
                   - type: "TransmitTextEffect"
                     params: 
-                    text: "I am really glad to have someone to talk to."
+                      text: "I am really glad to have someone to talk to."
                
           onBreakoffEffects: 
             - type: "PrintEffect"
               params: "You're a jerk!"
-
-  "PERSON_DEFAULT_01":
-    voiceKey : "A"
-
-    onStartRewards:
-      - type: "PrintEffect"
-        params: "BLOBLO"
-
-      - type: "ConditionalEffect"
-        params: 
-          statements:
-            - conditions:
-                - type: "WorldFlagCondition"
-                  params: {flag: "DoesRuckusMakerExist", operator: "NotEquals"}
-              effects:
-                - type: "AddWorldFlagEffect"
-                  params: {flag: "DoesRuckusMakerExist"}
-                - type: "AddStoryEffect"
-                  params: {storyKey: "STORY_TEST_AFFECT_NEIGHBOURS"}
-            - conditions: []
-              effects: 
-                - type: "RandomEffect"
-                  params: 
-                    effects:
-                    - type: "AddStoryEffect"
-                      params: {storyKey: "STORY_TEST_NOTHING"}
 
  
 

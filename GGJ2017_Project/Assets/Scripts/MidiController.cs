@@ -43,6 +43,28 @@ public class MidiController {
 		comboListeners.Add (listener);
 	}
 
+	public void Update(){
+		//for debug porpoises
+		if (Input.GetKeyDown(KeyCode.Z)){
+			OnNoteOn (MidiJack.MidiChannel.All, 48, 1);
+		}
+		if (Input.GetKeyDown(KeyCode.X)){
+			OnNoteOn (MidiJack.MidiChannel.All, 49, 1);
+		}
+		if (Input.GetKeyDown(KeyCode.C)){
+			OnNoteOn (MidiJack.MidiChannel.All, 51, 1);
+		}
+		if (Input.GetKeyDown(KeyCode.V)){
+			OnNoteOn (MidiJack.MidiChannel.All, 54, 1);
+		}
+		if (Input.GetKeyDown(KeyCode.B)){
+			OnNoteOn (MidiJack.MidiChannel.All, 56, 1);
+		}
+		if (Input.GetKeyDown(KeyCode.N)){
+			OnNoteOn (MidiJack.MidiChannel.All, 58, 1);
+		}
+	}
+
 	public void ClearComboListeners (){
 		comboListeners.Clear ();
 	}

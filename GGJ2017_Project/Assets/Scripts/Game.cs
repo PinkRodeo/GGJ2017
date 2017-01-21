@@ -28,8 +28,8 @@ namespace HAM
 
 
 			//TESTS
-			//string[] combo = { "e2", "e2", "e2", "c2", "e2", "g2" };
-			//midiController.AddComboListener(combo, ComboTest);
+			string[] combo = { "c#1", "d#1", "a#1"};
+			midiController.AddComboListener(combo, ComboTest);
 
 			//speechController.Say("hello world", SpeechTest);
 
@@ -38,6 +38,7 @@ namespace HAM
 
 		void Update(){
 			speechController.Update ();
+			midiController.Update ();
 		}
 
 
