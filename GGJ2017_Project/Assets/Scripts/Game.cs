@@ -25,7 +25,7 @@ namespace HAM
 
 			//TESTS
 			string[] combo = { "e2", "e2", "e2", "c2", "e2", "g2" };
-			midiController.AddComboListener(combo, ComboTest);
+			//midiController.AddComboListener(combo, ComboTest);
 
 			speechController.Say("hello world", SpeechTest);
 

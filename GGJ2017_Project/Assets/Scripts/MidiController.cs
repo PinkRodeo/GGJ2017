@@ -62,6 +62,7 @@ public class MidiController {
 				int k = listener.combo.Length -1 - jj;
 				int p = lastNotes.Count - 1 - jj;
 
+				Debug.Log (lastNotes [p] + " - " + listener.combo [k]);
 				if (lastNotes [p] != listener.combo [k]) {
 					isComplete = false;
 					break;
@@ -106,7 +107,7 @@ public class MidiController {
 
 	public static int StringToNote(string note){
 		int ii;
-		string letter = note.Substring (0, note.Length - 1);
+		string letter = note.Substring (0, note.Length - 1).ToLower();
 		int number = int.Parse(note.Substring (note.Length - 1));
 		for (ii = 0; ii < 12; ii++) {
 			if (NoteLetters [ii] == letter) {

@@ -32,6 +32,10 @@ namespace RadioWaves
 
 		public Person p_Person;
 
+		private float inTuneTimer = 0.0f;
+		private bool tunedIn = false;
+		private bool connected = false;
+
 		private void Reset()
 		{
 			transform.tag = RADIOCHANNEL_TAG;
@@ -68,7 +72,13 @@ namespace RadioWaves
 		// Update is called once per frame
 		void Update()
 		{
-
+			if (tunedIn && !connected) {
+				inTuneTimer += UnityEngine.Time.deltaTime;
+				if (inTuneTimer > 1.5f) {
+					connected = true;
+					p_Person.TuneIn();
+				}
+			}
 		}
 
 		void OnDrawGizmos()
@@ -81,7 +91,15 @@ namespace RadioWaves
 		{
 			HAM.Game.speechController.SetSource (m_AudioSource);
 			HAM.Game.speechController.SetClips (m_AudioClips);
-			p_Person.TuneIn();
+
+			connected = false;
+			tunedIn = true;
+			inTuneTimer = 0.0f;
+		}
+
+		public void TuneOut()
+		{
+			tunedIn = false;
 		}
 	}
 }
