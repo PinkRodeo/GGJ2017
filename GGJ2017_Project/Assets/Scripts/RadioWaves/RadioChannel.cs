@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Wundee;
@@ -26,6 +27,11 @@ namespace RadioWaves
 		public Effect[] onStartRewards;
 		[ReadOnly]
 		public Effect[] onTuneRewards;
+
+		[ReadOnly]
+		public Blackboard blackboard;
+
+		public Settlement settlement;
 
 		private void Reset()
 		{

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using LitJson;
+using RadioWaves;
 using Wundee.Stories;
 
 namespace Wundee
@@ -25,9 +26,9 @@ namespace Wundee
 		// parent == habitat
 		public override Settlement GetConcreteType(object parent = null)
 		{
-			var habitat = parent as Habitat;
+			var radioChannel = parent as RadioChannel;
 
-			var newSettlement = new Settlement(habitat);
+			var newSettlement = new Settlement(radioChannel);
 			newSettlement.ExecuteEffectFromDefinition(ref _onStartRewardDefinitions);
 			
 			return newSettlement;

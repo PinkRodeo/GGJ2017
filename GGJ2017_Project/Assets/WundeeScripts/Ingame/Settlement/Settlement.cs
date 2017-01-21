@@ -1,48 +1,34 @@
 ﻿
 using System.Collections.Generic;
-using UnityEngine.Networking.Match;
+using RadioWaves;
 using Wundee.Stories;
 
 namespace Wundee
 {
 	public class Settlement : IHabitatOccupant
 	{
-		public ActiveSettlement activeSettlement
-		{
-			get
-			{
-				if (_activeSettlement == null)
-					_activeSettlement = new ActiveSettlement(this);
-				
-				return _activeSettlement;
-			}
-		}
-
-		private readonly WorldSettlement _worldSettlement;
-		private ActiveSettlement _activeSettlement;
-		
-		public readonly Habitat habitat;
+		public readonly RadioChannel radioChannel;
 		public readonly StoryHolder storyHolder;
 
+		/*
 		public Need[] needs;
 		public Dictionary<string, Need> needsDictionary;
+		*/
 
 		private double _timeOfPreviousUpdate;
 
 		private HashSet<ushort> _settlementFlags = new HashSet<ushort>();  
 
-		public Settlement(Habitat habitat)
+		public Settlement(RadioChannel p_RadioChannel)
 		{
-			this.habitat = habitat;
+			this.radioChannel = p_RadioChannel;
 
 			this.storyHolder = new StoryHolder(this);
 
-			this._worldSettlement = new WorldSettlement(this);
-			// The active settlement is only generated when needed	
-			this._activeSettlement = null;
 			
 			var needParams = Game.instance.@params.needParams;
 
+			/*
 			this.needs = new Need[needParams.needs.Length];
 			this.needsDictionary = new Dictionary<string, Need>(needParams.needs.Length);
 
@@ -51,6 +37,7 @@ namespace Wundee
 				needs[i] = new Need(this, needParams.needs[i]);
 				needsDictionary[needParams.needs[i]] = needs[i];
 			}
+			*/
 		}
 		
 		public void Tick()
@@ -58,12 +45,6 @@ namespace Wundee
 			var deltaTime = Time.fixedGameTime - _timeOfPreviousUpdate;
 
 			storyHolder.Tick();
-
-			// Advance high level simulation
-			_worldSettlement.Tick(deltaTime);
-
-			if (_activeSettlement != null)
-				_activeSettlement.Tick(deltaTime);
 
 			_timeOfPreviousUpdate = Time.fixedGameTime;
 		}
