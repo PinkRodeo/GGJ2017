@@ -74,6 +74,9 @@ namespace RadioWaves
 		{
 			if (tunedIn && !connected) {
 				inTuneTimer += UnityEngine.Time.deltaTime;
+				HAM.Game.speechController.transmissionUI.SetVisible(true);
+				HAM.Game.speechController.transmissionUI.TextContent = "";
+
 				if (inTuneTimer > 1.5f) {
 					connected = true;
 					p_Person.TuneIn();
