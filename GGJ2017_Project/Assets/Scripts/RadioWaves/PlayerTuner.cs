@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using HAM;
 
 namespace RadioWaves
 {
@@ -26,6 +27,10 @@ namespace RadioWaves
 		private void Awake()
 		{
 			m_ConnectedChannels = new List<RadioChannel>();
+
+			HAM.Game.midiController.AddKnobListener (74, OnKnobX);
+			HAM.Game.midiController.AddKnobListener (71, OnKnobY);
+			HAM.Game.midiController.AddKnobListener (79, OnKnobZ);
 		}
 
 		private void OnTriggerEnter(Collider p_Collider)
@@ -66,7 +71,7 @@ namespace RadioWaves
 
 			if (Input.GetKey(KeyCode.A))
 			{
-				localPos.x += speed * Time.deltaTime;
+				transform.localPosition = localPos;
 			}
 			if (Input.GetKey(KeyCode.D))
 			{
@@ -84,6 +89,32 @@ namespace RadioWaves
 			}
 
 			transform.localPosition = localPos;
+		}
+
+		private void OnKnobX (float value){
+			var localPos = transform.localPosition;
+		
+			localPos.x = Mathf.Round (value * 127f);
+
+			transform.localPosition = localPos;
+		}
+
+		private void OnKnobY (float value){
+			var localPos = transform.localPosition;
+
+			localPos.y = Mathf.Round (value * 127f);
+
+			transform.localPosition = localPos;
+
+		}
+
+		private void OnKnobZ (float value){
+			var localPos = transform.localPosition;
+
+			localPos.z = Mathf.Round (value * 127f);
+
+			transform.localPosition = localPos;
+
 		}
 
 	}

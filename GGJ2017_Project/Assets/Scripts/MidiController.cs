@@ -91,22 +91,6 @@ public class MidiController {
 		}
 
 		return;
-
-		knobValue = Mathf.Round (knobValue * 127);
-		var pos = tuner.localPosition;
-
-		switch (knobNumber) {
-		case 74:
-			pos.x = knobValue;
-			break;
-		case 71:
-			pos.y = knobValue;
-			break;
-		case 79:
-			pos.z = knobValue;
-			break;
-		}
-		tuner.localPosition = pos;
 	}
 
 	string[] letters = {"c","c#","d","d#","e","f","f#","g","g#","a","a#","b"};

@@ -12,7 +12,7 @@ namespace HAM
 
 		public GUIText guiText;
 
-		void Start ()
+		void Awake ()
 		{
 			//midiController = gameObject.AddComponent<MidiController> ();
 			midiController = new MidiController();
