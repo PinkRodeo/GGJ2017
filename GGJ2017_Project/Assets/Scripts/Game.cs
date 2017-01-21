@@ -14,6 +14,8 @@ namespace HAM
 		private static AudioSource sStaticChannel;
 		
 		public TransmissionUI transmissionUI;
+		public DictionaryUI dictionaryUI;
+
 
 		void Awake ()
 		{
@@ -22,7 +24,9 @@ namespace HAM
 
 			speechController = new SpeechController ();
 			speechController.transmissionUI = transmissionUI;
-			
+			speechController.dictionaryUI = dictionaryUI;
+
+
 			//TESTS
 			//string[] combo = { "e2", "e2", "e2", "c2", "e2", "g2" };
 			//midiController.AddComboListener(combo, ComboTest);

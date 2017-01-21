@@ -4,19 +4,27 @@
     portraitKey : "Portrait_1"
 
     onStartRewards:
+      - "EFFECT_DICT_HELLO"
+
       - type: "PrintEffect"
         params: "StartReward"
 
     onTuneRewards:
       - "REWARD_TEST_WAIT_FOR_COMBO"
-      - type: "PrintEffect"
-        params: "TuneReward"
       - type: "TransmitTextEffect"
         params: 
           text: "Sometimes I cry myself to sleep. It gets worse over time. Sometimes, I even long for the sweet release of death."
           onCompleteEffects: 
             - type: "PrintEffect"
               params: "You listened to me, I appreciate that."
+            - type: "WaitForCombo"
+              params: 
+                comboDefinition: "COMBO_SAY_HELLO"
+                effects: 
+                  - type: "TransmitTextEffect"
+                    params: 
+                    text: "I am really glad to have someone to talk to."
+               
           onBreakoffEffects: 
             - type: "PrintEffect"
               params: "You're a jerk!"

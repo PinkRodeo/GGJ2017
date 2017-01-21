@@ -26,6 +26,7 @@ public class SpeechController {
 
 
 	public float lastAudioTime = 0.0f;
+	public DictionaryUI dictionaryUI;
 
 	// Update is called once per frame
 	public void Update () {
