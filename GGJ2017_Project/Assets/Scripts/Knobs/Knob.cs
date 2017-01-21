@@ -13,9 +13,9 @@ public class Knob : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		HAM.Game.midiController.AddKnobListener (knobId, OnTurn);
-
 		startRot = transform.localRotation;
+
+		HAM.Game.midiController.AddKnobListener (knobId, OnTurn);
 	}
 	
 	// Update is called once per frame

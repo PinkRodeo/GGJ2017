@@ -30,7 +30,6 @@ public class MidiController {
 		comboListeners = new List<ComboListener> ();
 		knobListeners = new List<KnobListener> ();
 	}
-		
 
 	void FlushCombo(){
 		lastNotes.Clear ();
@@ -81,6 +80,9 @@ public class MidiController {
 		listener.callback = callback;
 
 		knobListeners.Add (listener);
+
+		float currentVal = MidiJack.MidiMaster.GetKnob (knobNumber, 0.0f);
+		callback (currentVal);
 	}
 
 	void OnKnob(MidiJack.MidiChannel channel, int knobNumber, float knobValue){

@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PortraitTexture: {fileID: 114936206477053682}
+  PortraitPanel: {fileID: 224817239136679862}
   m_TextContent: 
   m_TextPanel: {fileID: 114330866871098790}
   m_MainPanel: {fileID: 224716594862696976}

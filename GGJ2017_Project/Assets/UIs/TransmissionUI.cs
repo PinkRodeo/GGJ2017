@@ -21,10 +21,19 @@ namespace HAM
 
 				m_TextPanel.text = m_TextContent;
 
+				if (value != "") {
+					PortraitPanel.DOScaleY (Random.Range(0.9f, 1.1f), 0.1f).SetEase (Ease.OutElastic);
+				} else {
+					PortraitPanel.DOKill ();
+					PortraitPanel.DOScaleY(1f, 0.3f).SetEase(Ease.InBack);
+
+				}
+
 			}
 		}
 
 		public Image PortraitTexture;
+		public RectTransform PortraitPanel;
 
 		[ReadOnly, SerializeField]
 		private string m_TextContent;

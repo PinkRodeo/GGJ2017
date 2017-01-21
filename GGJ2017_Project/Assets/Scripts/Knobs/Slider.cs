@@ -14,9 +14,9 @@ public class Slider : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		HAM.Game.midiController.AddKnobListener (knobId, OnTurn);
-
 		startPos = transform.localPosition;
+
+		HAM.Game.midiController.AddKnobListener (knobId, OnTurn);
 	}
 
 	// Update is called once per frame
