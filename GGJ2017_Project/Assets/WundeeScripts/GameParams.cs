@@ -10,16 +10,6 @@ namespace Wundee
 	{
 		public bool parseDefinitions = true;
 
-		public bool generateWorld = true;
-		public bool generateSettlements = true;
-		public bool generatePlayer = true;
-
-		public int worldWidth = 1600;
-		public int worldHeight = 900;
-
-		public float habitatMinDistance = 220f;
-		public int habitatCap = 500;
-
 		public Dictionary<string, System.Object> constants = new Dictionary<string, System.Object>(100); 
 
 		public NeedParams needParams = new NeedParams();
@@ -35,16 +25,6 @@ namespace Wundee
 				constants[constantKey] = ContentHelper.ParseDouble(constantsData, constantKey, 0d);
 			}
 			
-			worldWidth = ContentHelper.ParseInt(gameParamData, P.WORLD_WIDTH, this.worldWidth);
-			worldHeight = ContentHelper.ParseInt(gameParamData, P.WORLD_HEIGHT, this.worldHeight);
-			habitatMinDistance = ContentHelper.ParseFloat(gameParamData, P.HABITAT_MIN_DISTANCE,
-				this.habitatMinDistance);
-			habitatCap = ContentHelper.ParseInt(gameParamData, P.HABITAT_CAP, this.habitatCap);
-
-			generateWorld		= ContentHelper.ParseBool(gameParamData, P.GENERATE_WORLD, this.generateWorld);
-			generateSettlements = ContentHelper.ParseBool(gameParamData, P.GENERATE_SETTLEMENTS, this.generateSettlements);
-			generatePlayer		= ContentHelper.ParseBool(gameParamData, P.GENERATE_PLAYER, this.generatePlayer);
-
 			timeMultiplier = ContentHelper.ParseDouble(gameParamData, P.TIME_MULTIPLIER, this.timeMultiplier);
 
 			if (gameParamData.Keys.Contains(P.NEED_PARAMS))
@@ -99,17 +79,6 @@ namespace Wundee
 		public const string CONSTANTS = "constants";
 
 		public const string RANDOM = "RANDOM";
-
-		public const string WORLD_WIDTH = "worldWidth";
-		public const string WORLD_HEIGHT = "worldHeight";
-		public const string HABITAT_MIN_DISTANCE = "habitatMinDistance";
-
-		public const string HABITAT_CAP = "habitatCap";
-
-
-		public const string GENERATE_WORLD = "generateWorld";
-		public const string GENERATE_SETTLEMENTS = "generateSettlements";
-		public const string GENERATE_PLAYER = "generatePlayer";
 
 
 		public const string NEED_PARAMS = "needParams";

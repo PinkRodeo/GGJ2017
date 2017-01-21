@@ -48,6 +48,8 @@ namespace Wundee.Stories
 		}
 	}
 
+
+	/*
 	public class NearbySettlementEffect : SettlementEffect
 	{
 		private float _effectRange = 50f;
@@ -108,6 +110,6 @@ namespace Wundee.Stories
 			}, ref aaBBQuery);
 		}
 	}
-
+	*/
 }
 

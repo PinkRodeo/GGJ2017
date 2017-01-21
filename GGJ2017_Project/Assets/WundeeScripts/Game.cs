@@ -64,23 +64,10 @@ namespace Wundee
 				definitions.ParseDefinitions();
 			}
 
-			if (@params.generateWorld)
-			{
-				world.GenerateMap();
+			world.GenerateHabitats();
 
-				world.GenerateHabitats();
-			}
+			world.GenerateSettlements();
 
-			if (@params.generateSettlements)
-			{
-				world.GenerateSettlements();
-				// do faction generation here
-			}
-
-			if (@params.generatePlayer)
-			{
-				// do player generation here
-			}
 		}
 
 		public void Update(float dt)

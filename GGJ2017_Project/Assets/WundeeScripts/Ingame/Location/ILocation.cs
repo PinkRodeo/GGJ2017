@@ -63,7 +63,7 @@ namespace Wundee.Locations
 
 		public Vector2 GetPosition()
 		{
-			return target.position;
+			return Vector2.Zero;
 		}
 
 		public Vector2 GetDirection(Vector2 origin)

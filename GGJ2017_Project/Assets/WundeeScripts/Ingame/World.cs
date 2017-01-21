@@ -14,8 +14,6 @@ namespace Wundee
 		private List<Habitat> _habitats;
 		private List<Settlement> _settlements;
 
-		public FarseerPhysics.Dynamics.World physicsWorld;
-
 		private HashSet<ushort> _worldFlags = new HashSet<ushort>();
 
 
@@ -31,17 +29,12 @@ namespace Wundee
 
 		public World()
 		{
-			physicsWorld = new FarseerPhysics.Dynamics.World(new Vector2(0,0));
-
 			this._entities = new List<Entity>();
 			this._habitats = new List<Habitat>();
 			this._settlements = new List<Settlement>();
 
 
 			var gameParams = Game.instance.@params;
-
-			worldBounds = new Rectangle(0,0,
-										 gameParams.worldWidth    ,  gameParams.worldHeight);
 		}
 
 		public void Tick()
@@ -53,8 +46,6 @@ namespace Wundee
 				settlements[i].Tick();
 			}
 
-			physicsWorld.Step(Time.fixedDT);
-
 			var numEntities = _entities.Count;
 			for (int i = 0; i < numEntities; i++)
 			{
@@ -62,30 +53,16 @@ namespace Wundee
 			}
 		}
 
-		public void GenerateMap()
-		{
-			//throw new System.NotImplementedException();
-		}
-
 		public void GenerateHabitats()
 		{
+		/*
 			var gameParams = Game.instance.@params;
-
-			///*
 
 			var distributedPoints = UniformPoissonDiskSampler
 				.SampleRectangle(new Vector2(worldBounds.X, worldBounds.Y), 
 								 new Vector2(worldBounds.Right,  worldBounds.Bottom), 
 								 gameParams.habitatMinDistance)
 				.ToArray();
-			//*/
-
-			/*
-			var distributedPoints = new Vector2[]
-			{
-				new Vector2(0, 0)	
-			};
-			*/
 
 			// Cap the number of points we use in case something explodes
 			var numberOfSettlements = MathHelper.Min(distributedPoints.Length, gameParams.habitatCap);
@@ -97,6 +74,7 @@ namespace Wundee
 				_habitats.Add(newHabitat);
 				_entities.Add(newHabitat);
 			}
+		*/
 		}
 
 		public void GenerateSettlements()

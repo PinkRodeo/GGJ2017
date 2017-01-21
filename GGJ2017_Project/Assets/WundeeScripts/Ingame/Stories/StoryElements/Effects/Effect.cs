@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using LitJson;
 using Microsoft.Xna.Framework;
 using Wundee.Locations;
@@ -170,6 +171,8 @@ namespace Wundee.Stories
 
 		public override void ParseParams(JsonData parameters)
 		{
+			throw new NotImplementedException();
+
 			ContentHelper.VerifyKey(parameters, D.SPEED, definition.definitionKey);
 			movementSpeed = (float) ContentHelper.ParseDouble(parameters, D.SPEED, 1f);
 
@@ -179,6 +182,8 @@ namespace Wundee.Stories
 
 		public override Effect GetClone(StoryNode parent)
 		{
+			throw new NotImplementedException();
+
 			var retValue = base.GetClone(parent) as MoveEffect;
 
 			retValue.targetLocation = LocationHelper.ParseLocation(targetData);
@@ -188,14 +193,14 @@ namespace Wundee.Stories
 
 		public override void ExecuteEffect()
 		{
+			throw new NotImplementedException();
+		/*
 			var body = parentStoryNode.parentStory.parentSettlement.habitat.body;
 			var direction = targetLocation.GetDirection(body.Position);
 			direction.Normalize();
 
 			body.LinearVelocity += direction * movementSpeed * Time.fixedDT;
-
-			//body.SetTransform(body.Position + new Vector2(0.075f * movementSpeed), 0f);
-			
+*/	
 		}
 	}
 }
