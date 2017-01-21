@@ -89,6 +89,7 @@ namespace Wundee
 	// Definition keys, for lookup in Json files
 	public static class D
 	{
+		public static string TEXT = "text";
 		// Stories
 		public const string START_NODE = "startNode";
 		public const string STORYTRIGGERS = "storyTriggers";
