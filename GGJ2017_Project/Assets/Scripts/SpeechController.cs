@@ -44,6 +44,8 @@ public class SpeechController {
 			rewrite = true;
 		}
 
+		lastAudioTime += Time.deltaTime;
+
 		if (rewrite){
 			guiText.text = currentSentence.Substring (0, currentIndex);
 
@@ -54,10 +56,9 @@ public class SpeechController {
 				}
 				bSpeechCompleted = true;
 			}
-		}
-		lastAudioTime += Time.deltaTime;
-		if (lastAudioTime > 0.5f && Random.value < (lastAudioTime - 0.5) * 2) {
-			PlaySound ();
+			if (lastAudioTime > 0.5f && Random.value < (lastAudioTime - 0.5) * 2) {
+				PlaySound ();
+			}
 		}
 	}
 
