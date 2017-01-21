@@ -1,0 +1,112 @@
+---
+  "STORY_TEST_1":
+    storyName: "The epic story"
+    startNode: "STORYNODE_TEST_1"
+
+  "STORY_TEST_2":
+    storyName: "The epic story"
+    startNode:
+      property: "STORYNODE_TEST_2_PROP"
+      onStartRewards:
+        - type: "PrintEffect" 
+          params: "OnStart"
+
+      onCompleteRewards:
+        - type: "PrintEffect"
+          params: "OnComplete"
+      effects:
+        - type: "NeedRateEffect"
+          params:
+            need: "Population"
+            rate: 1
+        - type: "ConditionalEffect"
+          params:
+            effects:
+              - { type: "MoveEffect", params: { speed: 10.0, targetLocation: {xDir: 1, yDir: 0} } }
+            conditions:
+              - type: "NotCondition"
+                params:
+                  conditions:
+                    - { type: "KeyHeldCondition", params: {} }
+
+      storyTriggers:
+        - conditions:
+            - type: "NeedCondition"
+              params:
+                need: "Population"
+                operator: "Greater"
+                amount: 60
+          rewards:
+            - "REWARD_TEST_1"
+
+  "STORY_TEST_3":
+    storyName: "The epic story"
+    startNode:
+      property: "STORYNODE_TEST_2_PROP"
+      onStartRewards:
+        - type: "PrintEffect" 
+          params: "OnStart"
+
+      onCompleteRewards:
+        - type: "PrintEffect"
+          params: "OnComplete"
+
+      effects:
+        - type: "NeedRateEffect"
+          params: 
+           { need: "Population", rate: 0.5 }
+        - type: "ConditionalEffect"
+          params:
+            effects:
+              - { type: "MoveEffect", params: { speed: -20.0, targetLocation: {xDir: 1, yDir: 0} } }
+            conditions:
+              - type: "NotCondition"
+                params:
+                  conditions:
+                    - { type: "KeyHeldCondition", params: {} }
+
+      storyTriggers:
+        - conditions:
+            - type: "NeedCondition"
+              params:
+                need: "Population"
+                operator: "Greater"
+                amount: 60
+          rewards:
+            - "REWARD_TEST_1"
+
+
+  "STORY_TEST_AFFECT_NEIGHBOURS":
+    startNode:
+      onStartRewards:
+        - { type: "AddSettlementFlag", params: { flag: "HAS_SPEED_BOOST" } }
+        - { type: "AddSettlementFlag", params: { flag: "AFFECT_NEIGHBOURS" } }
+
+      effects:
+        - { type: "MoveEffect", params: { speed: 2000.0, targetLocation: {xDir: -1, yDir: -1}} }
+        - type: NearbySettlementEffect
+          params: 
+            range: 200
+            conditions: 
+              - { type: "SettlementFlagCondition", params: { flag: "HAS_SPEED_BOOST", operator: "NotEquals"}}
+            effects:
+              - { type: "AddSettlementFlag", params: { flag: "HAS_SPEED_BOOST" } }
+              - { type: "AddStoryEffect", params: { storyKey: "STORY_TEST_MOVE_ALOT" } }
+
+
+      storyTriggers:
+      - conditions:
+          - type: "KeyHeldCondition"
+            params: {}
+        rewards:
+          - "REWARD_TEST_1"
+
+  "STORY_TEST_MOVE_ALOT":
+      startNode:
+        effects:
+          - { type: "MoveEffect", params: { speed: 10.0, targetLocation: { hasFlag: "AFFECT_NEIGHBOURS" }  } }
+
+
+  "STORY_TEST_NOTHING":
+    startNode:
+      effects: []
