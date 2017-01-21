@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Wundee;
+using Wundee.Stories;
 
 namespace RadioWaves
 {
@@ -15,6 +17,15 @@ namespace RadioWaves
 
 		private Transform m_Transform;
 		private SphereCollider m_SphereCollider;
+
+		public string DefinitionKey = "RC_DEFAULT";
+
+		[ReadOnly]
+		public RadioChannelDefinition definition;
+		[ReadOnly]
+		public Effect[] onStartRewards;
+		[ReadOnly]
+		public Effect[] onTuneRewards;
 
 		private void Reset()
 		{
@@ -35,6 +46,13 @@ namespace RadioWaves
 			m_SphereCollider.radius = m_Range;
 		}
 
+		private void Start()
+		{
+			Wundee.Game.instance.definitions.radioChannelDefinitions[DefinitionKey].MakeConcreteType(this);
+
+			onStartRewards.ExecuteEffects();
+		}
+
 		// Update is called once per frame
 		void Update()
 		{
@@ -45,6 +63,11 @@ namespace RadioWaves
 		{
 			DebugExtension.DrawCapsule(transform.localPosition, transform.localPosition + Vector3.up * 0.01f, Color.blue, m_Range);
 
+		}
+
+		public void TuneIn()
+		{
+			onTuneRewards.ExecuteEffects();
 		}
 	}
 }

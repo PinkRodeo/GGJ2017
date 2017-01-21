@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using HAM;
 
 namespace RadioWaves
 {
@@ -26,18 +27,22 @@ namespace RadioWaves
 		private void Awake()
 		{
 			m_ConnectedChannels = new List<RadioChannel>();
+
+			HAM.Game.midiController.AddKnobListener (74, OnKnobX);
+			HAM.Game.midiController.AddKnobListener (71, OnKnobY);
+			HAM.Game.midiController.AddKnobListener (79, OnKnobZ);
 		}
 
 		private void OnTriggerEnter(Collider p_Collider)
 		{
-			Debug.Log("Col enter");
-
 			var radioChannel = p_Collider.GetComponent<RadioChannel>();
 
 			if (radioChannel)
 			{
 				Debug.Log("Player tuned into: " + p_Collider.gameObject.name);
 				m_ConnectedChannels.Add(radioChannel);
+
+				radioChannel.TuneIn();
 			}
 		}
 
@@ -61,8 +66,6 @@ namespace RadioWaves
 
 		private void Update()
 		{
-			Debug.Log("Update");
-
 			var localPos = transform.localPosition;
 			var speed = 2f;
 
@@ -86,6 +89,32 @@ namespace RadioWaves
 			}
 
 			transform.localPosition = localPos;
+		}
+
+		private void OnKnobX (float value){
+			var localPos = transform.localPosition;
+		
+			localPos.x = Mathf.Round (value * 127f);
+
+			transform.localPosition = localPos;
+		}
+
+		private void OnKnobY (float value){
+			var localPos = transform.localPosition;
+
+			localPos.y = Mathf.Round (value * 127f);
+
+			transform.localPosition = localPos;
+
+		}
+
+		private void OnKnobZ (float value){
+			var localPos = transform.localPosition;
+
+			localPos.z = Mathf.Round (value * 127f);
+
+			transform.localPosition = localPos;
+
 		}
 
 	}
