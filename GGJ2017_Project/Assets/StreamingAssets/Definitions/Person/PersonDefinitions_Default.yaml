@@ -1,6 +1,7 @@
 ---
   "PERSON_DEFAULT":
     voiceKey : "A"
+    portraitKey : "Portrait_1"
 
     onStartRewards:
       - type: "PrintEffect"

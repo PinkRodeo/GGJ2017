@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9288a953a8efe77428a403f64c8f1b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PortraitTexture: {fileID: 114936206477053682}
   m_TextContent: 
   m_TextPanel: {fileID: 114330866871098790}
   m_MainPanel: {fileID: 224716594862696976}
@@ -185,10 +186,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.1
-  m_Text: kdsalfkd jaslfdkl asjkfdl akld jsfklf akdsjk alfdjkaldfs jkla fdkslfjd kl;ajkf
-    dslf dajsklfd jkafsdjklf jkaldsjf kljf dkasljf dklaj kfslfj akljdfsklafdjkldfj
-    skalfdjklafj dkl dsjfklfdjak sldfjkldafjskljdfksl jdfksl dffdjklfdjslkfdskldfj
-    kl flkdjafdkladfjkaldfjkldfsjdfjkdljdfkdlsfkjdfdsfkdfjskljdflkj
+  m_Text: <i>Text</i>
 --- !u!114 &114468043743378504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -336,15 +334,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8235294, g: 0.65781915, b: 0.20588236, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 7afdf8adc2be38948b7c11705ebeec94, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -511,5 +509,5 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 187.5, y: 250}
+  m_SizeDelta: {x: 188, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}

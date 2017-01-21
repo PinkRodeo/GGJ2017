@@ -5,6 +5,7 @@ using UnityEngine;
 using RadioWaves;
 using HAM;
 using LitJson;
+using UnityEditor;
 
 namespace Wundee.Stories
 {
@@ -13,8 +14,10 @@ namespace Wundee.Stories
 	{
 		private string _TextToTransmit;
 
+
 		protected Definition<Effect>[] _onCompleteEffects;
 		protected Definition<Effect>[] _onBreakoffEffects;
+
 
 
 
@@ -28,6 +31,7 @@ namespace Wundee.Stories
 			{
 				Logger.Error(definition.definitionKey + " Invalid text found");
 			}
+
 
 
 			if (keys.Contains(D.EFFECTS_ON_COMPLETE))
@@ -45,8 +49,7 @@ namespace Wundee.Stories
 		public override void ExecuteEffect()
 		{
 			var testParent = parentStoryNode;
-
-			
+		
 
 			HAM.Game.speechController.Say(_TextToTransmit, 
 				() =>
@@ -58,6 +61,7 @@ namespace Wundee.Stories
 					parentStoryNode.parentStory.parentPerson.ExecuteEffectFromDefinition(ref _onBreakoffEffects);
 				}
 			);
+
 
 			//.radioChannel;
 

@@ -24,6 +24,8 @@ namespace HAM
 			}
 		}
 
+		public Image PortraitTexture;
+
 		[ReadOnly, SerializeField]
 		private string m_TextContent;
 
