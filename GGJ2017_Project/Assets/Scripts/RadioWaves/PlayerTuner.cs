@@ -72,6 +72,12 @@ namespace RadioWaves
 
 		private void Update()
 		{
+			if (m_ConnectedChannels.Count > 0)
+			{
+				transform.LookAt (m_ConnectedChannels [0].transform.position);
+			}
+
+
 			var localPos = transform.localPosition;
 			var speed = 2f;
 
