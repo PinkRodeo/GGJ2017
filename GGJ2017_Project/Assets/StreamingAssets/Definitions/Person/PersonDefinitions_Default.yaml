@@ -1,0 +1,40 @@
+---
+  "PERSON_DEFAULT":
+    onStartRewards:
+      - type: "PrintEffect"
+        params: "StartReward"
+
+    onTuneRewards:
+      - type: "PrintEffect"
+        params: "TuneReward"
+      - type: "TransmitTextEffect"
+        params: { text: "Sometimes I cry myself to sleep." }
+
+
+  "PERSON_DEFAULT_01":
+    onStartRewards:
+      - type: "PrintEffect"
+        params: "BLOBLO"
+
+      - type: "ConditionalEffect"
+        params: 
+          statements:
+            - conditions:
+                - type: "WorldFlagCondition"
+                  params: {flag: "DoesRuckusMakerExist", operator: "NotEquals"}
+              effects:
+                - type: "AddWorldFlagEffect"
+                  params: {flag: "DoesRuckusMakerExist"}
+                - type: "AddStoryEffect"
+                  params: {storyKey: "STORY_TEST_AFFECT_NEIGHBOURS"}
+            - conditions: []
+              effects: 
+                - type: "RandomEffect"
+                  params: 
+                    effects:
+                    - type: "AddStoryEffect"
+                      params: {storyKey: "STORY_TEST_NOTHING"}
+
+ 
+
+

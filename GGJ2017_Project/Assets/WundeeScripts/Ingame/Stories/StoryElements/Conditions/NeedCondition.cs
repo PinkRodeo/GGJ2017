@@ -3,6 +3,7 @@ using LitJson;
 
 namespace Wundee.Stories
 {
+/*
 	public class NeedCondition : Condition
 	{
 		private double _amount;
@@ -27,7 +28,7 @@ namespace Wundee.Stories
 			return _operator.CheckCondition(parentStoryNode.parentStory.parentSettlement.needs[_needIndex].amount, _amount);
 		}
 	}
-
+	*/
 
 
 }

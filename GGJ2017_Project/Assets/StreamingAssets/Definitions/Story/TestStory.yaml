@@ -3,78 +3,6 @@
     storyName: "The epic story"
     startNode: "STORYNODE_TEST_1"
 
-  "STORY_TEST_2":
-    storyName: "The epic story"
-    startNode:
-      property: "STORYNODE_TEST_2_PROP"
-      onStartRewards:
-        - type: "PrintEffect" 
-          params: "OnStart"
-
-      onCompleteRewards:
-        - type: "PrintEffect"
-          params: "OnComplete"
-      effects:
-        - type: "NeedRateEffect"
-          params:
-            need: "Population"
-            rate: 1
-        - type: "ConditionalEffect"
-          params:
-            effects:
-              - { type: "NullEffect", params: { speed: 10.0, targetLocation: {xDir: 1, yDir: 0} } }
-            conditions:
-              - type: "NotCondition"
-                params:
-                  conditions:
-                    - { type: "KeyHeldCondition", params: {} }
-
-      storyTriggers:
-        - conditions:
-            - type: "NeedCondition"
-              params:
-                need: "Population"
-                operator: "Greater"
-                amount: 60
-          rewards:
-            - "REWARD_TEST_1"
-
-  "STORY_TEST_3":
-    storyName: "The epic story"
-    startNode:
-      property: "STORYNODE_TEST_2_PROP"
-      onStartRewards:
-        - type: "PrintEffect" 
-          params: "OnStart"
-
-      onCompleteRewards:
-        - type: "PrintEffect"
-          params: "OnComplete"
-
-      effects:
-        - type: "NeedRateEffect"
-          params: 
-           { need: "Population", rate: 0.5 }
-        - type: "ConditionalEffect"
-          params:
-            effects:
-              - { type: "NullEffect", params: { speed: -20.0, targetLocation: {xDir: 1, yDir: 0} } }
-            conditions:
-              - type: "NotCondition"
-                params:
-                  conditions:
-                    - { type: "KeyHeldCondition", params: {} }
-
-      storyTriggers:
-        - conditions:
-            - type: "NeedCondition"
-              params:
-                need: "Population"
-                operator: "Greater"
-                amount: 60
-          rewards:
-            - "REWARD_TEST_1"
-
 
   "STORY_TEST_AFFECT_NEIGHBOURS":
     startNode:
@@ -100,11 +28,6 @@
             params: {}
         rewards:
           - "REWARD_TEST_1"
-
-  "STORY_TEST_MOVE_ALOT":
-      startNode:
-        effects:
-          - { type: "NullEffect", params: { speed: 10.0, targetLocation: { hasFlag: "AFFECT_NEIGHBOURS" }  } }
 
 
   "STORY_TEST_NOTHING":

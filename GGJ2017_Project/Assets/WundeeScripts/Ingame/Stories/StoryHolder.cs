@@ -8,7 +8,7 @@ namespace Wundee.Stories
 
 	public class StoryHolder
 	{
-		private Settlement owner;
+		private Person owner;
 
 		private Story[] activeStories;
 
@@ -16,7 +16,7 @@ namespace Wundee.Stories
 		public readonly StoryNode lifeStoryNode;
 
 
-		public StoryHolder(Settlement owner)
+		public StoryHolder(Person owner)
 		{
 			this.owner = owner;
 
@@ -24,7 +24,7 @@ namespace Wundee.Stories
 			lifeStoryNode = new StoryNode();
 
 			lifeStory.currentNode = lifeStoryNode;
-			lifeStory.parentSettlement = owner;
+			lifeStory.parentPerson = owner;
 			lifeStoryNode.parentStory = lifeStory;
 
 

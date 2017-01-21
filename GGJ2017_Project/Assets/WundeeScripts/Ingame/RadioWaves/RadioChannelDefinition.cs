@@ -14,6 +14,8 @@ namespace RadioWaves
 		private Definition<Effect>[] _onStartRewardDefinitions;
 		private Definition<Effect>[] _onTuneRewardDefinitions;
 
+		private string _settlementKey;
+
 		public override void ParseDefinition (string definitionKey, JsonData jsonData)
 		{
 			this.definitionKey = definitionKey;
@@ -30,6 +32,10 @@ namespace RadioWaves
 				this._onTuneRewardDefinitions = EffectDefinition.ParseDefinitions(jsonData[D.REWARDS_ON_TUNE], definitionKey);
 			else
 				this._onTuneRewardDefinitions = new Definition<Effect>[0];
+
+
+
+			_settlementKey = ContentHelper.ParseString(jsonData, "personDefinitionKey", "PERSON_DEFAULT_01");
 		}
 
 		public override RadioChannel GetConcreteType (object parent = null)
@@ -40,9 +46,8 @@ namespace RadioWaves
 		public void MakeConcreteType(RadioChannel p_RadioChannel)
 		{
 			p_RadioChannel.definition = this;
-
-			p_RadioChannel.onStartRewards = _onStartRewardDefinitions.GetConcreteTypes(p_RadioChannel);
-			p_RadioChannel.onTuneRewards = _onTuneRewardDefinitions.GetConcreteTypes(p_RadioChannel);
+			
+			p_RadioChannel.p_Person = Game.instance.definitions.personDefinitions[_settlementKey].GetConcreteType(p_RadioChannel);
 		}
 	}
 }

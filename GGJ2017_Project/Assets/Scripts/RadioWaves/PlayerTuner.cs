@@ -41,8 +41,9 @@ namespace RadioWaves
 			{
 				Debug.Log("Player tuned into: " + p_Collider.gameObject.name);
 				m_ConnectedChannels.Add(radioChannel);
-
+				HAM.Game.SetStaticVolume (0.1f);
 				radioChannel.TuneIn();
+
 			}
 		}
 
@@ -54,6 +55,10 @@ namespace RadioWaves
 			{
 				Debug.Log("Player tuned out of: " + p_Collider.gameObject.name);
 				m_ConnectedChannels.Remove(radioChannel);
+			}
+
+			if (m_ConnectedChannels.Count == 0) {
+				HAM.Game.SetStaticVolume (1.0f);
 			}
 		}
 

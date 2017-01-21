@@ -174,6 +174,24 @@ namespace Wundee
 			return defaultValue;
 		}
 
+		public static string ParseString (JsonData jsonData, string key, string defaultValue)
+		{
+			if (jsonData.Keys.Contains(key))
+			{
+				var value = jsonData[key];
+				if (value.IsString)
+					return (string) value;
+				else
+				{
+					Logger.Error("Tried parsing invalid string with key " + key + " and defaultvalue " + defaultValue);
+
+					return defaultValue;
+				}
+			}
+			return defaultValue;
+		}
+
+
 		public static int ParseNeedIndex(JsonData jsonData, string key)
 		{
 			if (!jsonData.Keys.Contains(key)) 
@@ -248,7 +266,6 @@ namespace Wundee
 
 			return newFlagShort;
 		}
-
 
 		[Conditional("DEBUG_CONTENT")]
 		public static void VerifyKey(JsonData jsonData, string key, string ownerKey)

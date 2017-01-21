@@ -6,12 +6,10 @@ namespace Wundee
 {
 	public class Habitat : Entity
 	{
-		public IHabitatOccupant occupant;
 
 		public bool IsOccupied()
 		{
-			if (occupant != null)
-				return true;
+
 
 			return false;
 		}
@@ -22,8 +20,4 @@ namespace Wundee
 		}
 	}
 
-	public interface IHabitatOccupant
-	{
-		
-	}
 }

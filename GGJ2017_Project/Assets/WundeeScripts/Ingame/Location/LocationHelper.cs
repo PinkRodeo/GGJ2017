@@ -39,7 +39,7 @@ namespace Wundee.Locations
 				{
 					if (settlements[i].HasFlag(flag))
 					{
-						return new TargetEntityLocation(settlements[i].habitat);
+						return new TargetEntityLocation(settlements[i].radioChannel);
 					}
 				}
 			}

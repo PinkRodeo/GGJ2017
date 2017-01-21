@@ -1,6 +1,6 @@
-﻿
-
-using Microsoft.Xna.Framework;
+﻿using System;
+using UnityEngine;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace Wundee.Locations
 {
@@ -54,22 +54,23 @@ namespace Wundee.Locations
 
 	public class TargetEntityLocation : ILocation
 	{
-		private Entity target;
+		private MonoBehaviour target;
 
-		public TargetEntityLocation(Entity target)
+		public TargetEntityLocation(MonoBehaviour target)
 		{
 			this.target = target;
 		}
 
 		public Vector2 GetPosition()
 		{
-			return Vector2.Zero;
+			throw new NotImplementedException();
 		}
 
 		public Vector2 GetDirection(Vector2 origin)
 		{
-			return Game.instance.world.GetShortestLineTo(origin, GetPosition());
-			//return GetPosition() - origin;
+			throw new NotImplementedException();
+
+		//	return Game.instance.world.GetShortestLineTo(origin, GetPosition());
 		}
 	}
 

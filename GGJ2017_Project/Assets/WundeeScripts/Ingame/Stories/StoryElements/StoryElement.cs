@@ -1,5 +1,6 @@
 ﻿
 
+using System;
 using LitJson;
 
 
@@ -9,7 +10,7 @@ namespace Wundee.Stories
 	{
 		public StoryElementDefinition<TChild> definition;
 		public StoryNode parentStoryNode;
-
+		
 		public abstract void ParseParams(JsonData parameters);
 
 		public virtual TChild GetClone(StoryNode parent)
