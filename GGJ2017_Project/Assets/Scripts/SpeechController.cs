@@ -21,6 +21,7 @@ public class SpeechController {
 	SpeechCallback onBreakoff = null;
 
 	private bool bSpeechCompleted = false;
+	private float playLength = 0.1f;
 
 
 	public float lastAudioTime = 0.0f;
@@ -56,7 +57,7 @@ public class SpeechController {
 				}
 				bSpeechCompleted = true;
 			}
-			if (lastAudioTime > 0.5f && Random.value < (lastAudioTime - 0.5) * 2) {
+			if (lastAudioTime/playLength > 0.6f && Random.value < (lastAudioTime/playLength)) {
 				PlaySound ();
 			}
 		}
@@ -110,8 +111,9 @@ public class SpeechController {
 		if (audioClips.Length < 1 || !source){
 			return;
 		}
-
-		AudioClip clip = audioClips[Mathf.FloorToInt(Random.value * audioClips.Length)];
+		int idx = Mathf.FloorToInt (Random.value * audioClips.Length);
+		playLength = audioClips [idx].length;
+		AudioClip clip = audioClips[idx];
 		source.clip = clip;
 		source.Play ();
 

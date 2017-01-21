@@ -16,6 +16,11 @@ namespace RadioWaves
 		[ReadOnly, SerializeField]
 		private List<RadioChannel> m_ConnectedChannels = new List<RadioChannel>();
 
+		public AudioClip soundOn;
+		public AudioClip soundOff;
+
+		private AudioSource m_AudioSource;
+
 		private void Reset()
 		{
 			gameObject.name = "PlayerTuner";
@@ -27,6 +32,8 @@ namespace RadioWaves
 		private void Awake()
 		{
 			m_ConnectedChannels = new List<RadioChannel>();
+
+			m_AudioSource = GetComponent<AudioSource>();
 
 			HAM.Game.midiController.AddKnobListener (74, OnKnobX);
 			HAM.Game.midiController.AddKnobListener (71, OnKnobY);
@@ -43,6 +50,9 @@ namespace RadioWaves
 				m_ConnectedChannels.Add(radioChannel);
 				HAM.Game.SetStaticVolume (0.1f);
 				radioChannel.TuneIn();
+
+				m_AudioSource.clip = soundOn;
+				m_AudioSource.Play ();
 			}
 		}
 
@@ -56,6 +66,9 @@ namespace RadioWaves
 				m_ConnectedChannels.Remove(radioChannel);
 				HAM.Game.speechController.Clear ();
 				radioChannel.TuneOut();
+
+				m_AudioSource.clip = soundOff;
+				m_AudioSource.Play ();
 			}
 
 			if (m_ConnectedChannels.Count == 0) {

@@ -74,7 +74,7 @@ namespace RadioWaves
 		{
 			if (tunedIn && !connected) {
 				inTuneTimer += UnityEngine.Time.deltaTime;
-				if (inTuneTimer > 1.5f) {
+				if (inTuneTimer > 0.8f) {
 					connected = true;
 					p_Person.TuneIn();
 				}
