@@ -19,6 +19,8 @@ public class SpeechController {
 
 	SpeechCallback onComplete = null;
 
+	public float lastAudioTime = 0.0f;
+
 	// Update is called once per frame
 	public void Update () {
 		bool rewrite = false;
@@ -40,13 +42,14 @@ public class SpeechController {
 
 		if (rewrite){
 			guiText.text = currentSentence.Substring (0, currentIndex);
-			if (source && !source.isPlaying) {
-				PlaySound ();
-			}
 
 			if (currentIndex == currentSentence.Length && onComplete != null) {
 				onComplete ();
 			}
+		}
+		lastAudioTime += Time.deltaTime;
+		if (lastAudioTime > 0.5f && Random.value < (lastAudioTime - 0.5) * 2) {
+			PlaySound ();
 		}
 	}
 
@@ -87,5 +90,7 @@ public class SpeechController {
 		AudioClip clip = audioClips[Mathf.FloorToInt(Random.value * audioClips.Length)];
 		source.clip = clip;
 		source.Play ();
+
+		lastAudioTime = 0;
 	}
 }

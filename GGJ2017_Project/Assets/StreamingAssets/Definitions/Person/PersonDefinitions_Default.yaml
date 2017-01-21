@@ -12,6 +12,7 @@
         params: "TuneReward"
       - type: "TransmitTextEffect"
         params: { text: "Sometimes I cry myself to sleep. It gets worse over time. Sometimes, I even long for the sweet release of death." }
+        
 
 
   "PERSON_DEFAULT_01":
