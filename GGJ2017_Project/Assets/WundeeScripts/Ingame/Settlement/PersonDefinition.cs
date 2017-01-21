@@ -11,6 +11,7 @@ namespace Wundee
 		public Definition<Effect>[] _onStartRewardDefinitions;
 		public Definition<Effect>[] _onTuneInRewardDefinitions;
 
+		public string voiceType;
 
 		public override void ParseDefinition(string definitionKey, JsonData jsonData)
 		{
@@ -23,6 +24,7 @@ namespace Wundee
 			else
 				this._onStartRewardDefinitions = new Definition<Effect>[0];
 
+			this.voiceType = ContentHelper.ParseString (jsonData, "voiceKey", "A");
 
 			if (keys.Contains(D.REWARDS_ON_TUNE))
 				this._onTuneInRewardDefinitions = EffectDefinition.ParseDefinitions(jsonData[D.REWARDS_ON_TUNE], definitionKey);
@@ -36,10 +38,10 @@ namespace Wundee
 		{
 			var radioChannel = parent as RadioChannel;
 
-			var newPerson = new Person(radioChannel);
-			newPerson.definition = this;
+			var newPerson = new Person(radioChannel, this);
 			newPerson.ExecuteEffectFromDefinition(ref _onStartRewardDefinitions);
-			
+		
+
 			return newPerson;
 		}
 	}

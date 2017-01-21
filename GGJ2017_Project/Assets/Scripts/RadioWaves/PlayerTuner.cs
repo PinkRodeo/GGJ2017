@@ -55,6 +55,7 @@ namespace RadioWaves
 			{
 				Debug.Log("Player tuned out of: " + p_Collider.gameObject.name);
 				m_ConnectedChannels.Remove(radioChannel);
+				HAM.Game.speechController.Clear ();
 			}
 
 			if (m_ConnectedChannels.Count == 0) {

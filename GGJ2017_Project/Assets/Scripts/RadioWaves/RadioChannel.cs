@@ -54,6 +54,7 @@ namespace RadioWaves
 			m_AudioSource.minDistance = m_Range*0.75f;
 			m_AudioSource.maxDistance = m_Range;
 			m_AudioSource.spatialBlend = 1.0f;
+			m_AudioSource.spatialize = false;
 		}
 
 		private void Start()
@@ -75,6 +76,7 @@ namespace RadioWaves
 
 		public void TuneIn()
 		{
+			HAM.Game.speechController.SetSource (m_AudioSource);
 			p_Person.TuneIn();
 		}
 	}

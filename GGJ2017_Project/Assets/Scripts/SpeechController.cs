@@ -51,6 +51,7 @@ public class SpeechController {
 
 	public void SetClips(AudioClip[] clips){
 		audioClips = clips;
+		Debug.Log (clips.Length);
 	}
 
 	public void SetSpeed(float speed){
