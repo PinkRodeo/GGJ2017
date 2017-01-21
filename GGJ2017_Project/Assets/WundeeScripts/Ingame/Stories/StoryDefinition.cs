@@ -21,10 +21,10 @@ namespace Wundee.Stories
 			var newStory = new Story
 			{
 				definition = this,
-				parentSettlement = parent as Settlement
+				parentPerson = parent as Person
 			};
 			
-			if (newStory.parentSettlement == null)
+			if (newStory.parentPerson == null)
 				Logger.Log("[StoryDefinition] Invalid parent Settlement provided for new Story");
 
 			newStory.SetCurrentStoryNode(_startNode.GetConcreteType(newStory));

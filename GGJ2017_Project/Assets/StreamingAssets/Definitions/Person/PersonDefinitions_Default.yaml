@@ -1,6 +1,19 @@
 ---
-  "SETTLEMENT_DEFAULT_01":
+  "PERSON_DEFAULT":
     onStartRewards:
+      - type: "PrintEffect"
+        params: "StartReward"
+
+    onTuneRewards:
+      - type: "PrintEffect"
+        params: "TuneReward"
+
+
+  "PERSON_DEFAULT_01":
+    onStartRewards:
+      - type: "PrintEffect"
+        params: "BLOBLO"
+
       - type: "ConditionalEffect"
         params: 
           statements:

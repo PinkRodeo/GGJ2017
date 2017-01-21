@@ -5,7 +5,7 @@ using Wundee.Stories;
 
 namespace Wundee
 {
-	public class Settlement : IHabitatOccupant
+	public class Person
 	{
 		public readonly RadioChannel radioChannel;
 		public readonly StoryHolder storyHolder;
@@ -17,9 +17,10 @@ namespace Wundee
 
 		private double _timeOfPreviousUpdate;
 
-		private HashSet<ushort> _settlementFlags = new HashSet<ushort>();  
+		private HashSet<ushort> _settlementFlags = new HashSet<ushort>();
+		public PersonDefinition definition;
 
-		public Settlement(RadioChannel p_RadioChannel)
+		public Person(RadioChannel p_RadioChannel)
 		{
 			this.radioChannel = p_RadioChannel;
 
@@ -38,6 +39,13 @@ namespace Wundee
 				needsDictionary[needParams.needs[i]] = needs[i];
 			}
 			*/
+
+			
+		}
+
+		public void TuneIn()
+		{
+			ExecuteEffectFromDefinition(ref this.definition._onTuneInRewardDefinitions);
 		}
 		
 		public void Tick()

@@ -5,7 +5,7 @@
 		public StoryNode currentNode;
 		public StoryDefinition definition;
 
-		public Settlement parentSettlement;
+		public Person parentPerson;
 
 		public void Tick()
 		{

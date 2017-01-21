@@ -7,11 +7,11 @@
 	// ActiveSettlement to represent
 	public class WorldSettlement
 	{
-		private Settlement _settlement;
+		private Person _person;
 
-		public WorldSettlement(Settlement settlement)
+		public WorldSettlement(Person p_Person)
 		{
-			this._settlement = settlement;
+			this._person = p_Person;
 		}
 
 		public void Tick(double deltaTime)

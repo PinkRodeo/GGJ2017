@@ -19,7 +19,7 @@ namespace Wundee
 {
 	public class DataLoader
 	{
-		public DefinitionLoader<SettlementDefinition, Settlement> settlementDefinitions; 
+		public DefinitionLoader<PersonDefinition, Person> personDefinitions; 
 
 		public DefinitionLoader<StoryDefinition, Story> storyDefinitions;
 		public DefinitionLoader<StoryNodeDefinition, StoryNode> storyNodeDefinitions;
@@ -40,7 +40,7 @@ namespace Wundee
 
 		public DataLoader()
 		{
-			settlementDefinitions = new DefinitionLoader<SettlementDefinition, Settlement>(this);
+			personDefinitions = new DefinitionLoader<PersonDefinition, Person>(this);
 
 			storyDefinitions = new DefinitionLoader<StoryDefinition, Story>(this);
 			storyNodeDefinitions = new DefinitionLoader<StoryNodeDefinition, StoryNode>(this);
@@ -55,7 +55,7 @@ namespace Wundee
 			this.definitionLoaderMapper = new Dictionary<Type, object>(10);
 
 			
-			definitionLoaderMapper[typeof(SettlementDefinition)] = settlementDefinitions;
+			definitionLoaderMapper[typeof(PersonDefinition)] = personDefinitions;
 
 			definitionLoaderMapper[typeof (StoryDefinition)] = storyDefinitions;
 			definitionLoaderMapper[typeof (StoryNodeDefinition)] = storyNodeDefinitions;
@@ -90,7 +90,7 @@ namespace Wundee
 
 		public void ParseDefinitions()
 		{
-			settlementDefinitions.AddFolder("Settlement");
+			personDefinitions.AddFolder("Person");
 
 			storyDefinitions.AddFolder("Story");
 			storyNodeDefinitions.AddFolder("StoryNode");

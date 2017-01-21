@@ -23,15 +23,9 @@ namespace RadioWaves
 
 		[ReadOnly]
 		public RadioChannelDefinition definition;
-		[ReadOnly]
-		public Effect[] onStartRewards;
-		[ReadOnly]
-		public Effect[] onTuneRewards;
 
-		[ReadOnly]
-		public Blackboard blackboard;
 
-		public Settlement settlement;
+		public Person p_Person;
 
 		private void Reset()
 		{
@@ -55,8 +49,7 @@ namespace RadioWaves
 		private void Start()
 		{
 			Wundee.Game.instance.definitions.radioChannelDefinitions[DefinitionKey].MakeConcreteType(this);
-
-			onStartRewards.ExecuteEffects();
+			
 		}
 
 		// Update is called once per frame
@@ -73,7 +66,7 @@ namespace RadioWaves
 
 		public void TuneIn()
 		{
-			onTuneRewards.ExecuteEffects();
+			p_Person.TuneIn();
 		}
 	}
 }

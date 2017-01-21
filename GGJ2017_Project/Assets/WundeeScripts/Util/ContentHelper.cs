@@ -180,7 +180,7 @@ namespace Wundee
 			{
 				var value = jsonData[key];
 				if (value.IsString)
-					return (string)value;
+					return (string) value;
 				else
 				{
 					Logger.Error("Tried parsing invalid string with key " + key + " and defaultvalue " + defaultValue);

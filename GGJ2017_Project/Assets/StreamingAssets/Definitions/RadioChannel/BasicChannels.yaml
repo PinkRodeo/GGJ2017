@@ -2,12 +2,5 @@
   "RC_DEFAULT":
     channelName: "The default channel"
 
-    settlementKey: "SETTLEMENT_DEFAULT_01"
+    personDefinitionKey: "PERSON_DEFAULT"
 
-    onStartRewards:
-      - type: "PrintEffect"
-        params: "StartReward"
-
-    onTuneRewards:
-      - type: "PrintEffect"
-        params: "TuneReward"

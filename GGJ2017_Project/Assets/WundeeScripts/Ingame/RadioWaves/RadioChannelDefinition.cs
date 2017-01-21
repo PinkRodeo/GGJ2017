@@ -35,7 +35,7 @@ namespace RadioWaves
 
 
 
-			_settlementKey = ContentHelper.ParseString(jsonData, "SettlementKey", "SETTLEMENT_DEFAULT_01");
+			_settlementKey = ContentHelper.ParseString(jsonData, "personDefinitionKey", "PERSON_DEFAULT_01");
 		}
 
 		public override RadioChannel GetConcreteType (object parent = null)
@@ -46,11 +46,8 @@ namespace RadioWaves
 		public void MakeConcreteType(RadioChannel p_RadioChannel)
 		{
 			p_RadioChannel.definition = this;
-
-			p_RadioChannel.onStartRewards = _onStartRewardDefinitions.GetConcreteTypes(p_RadioChannel);
-			p_RadioChannel.onTuneRewards = _onTuneRewardDefinitions.GetConcreteTypes(p_RadioChannel);
-
-			p_RadioChannel.settlement = Game.instance.definitions.settlementDefinitions[_settlementKey].GetConcreteType(p_RadioChannel);
+			
+			p_RadioChannel.p_Person = Game.instance.definitions.personDefinitions[_settlementKey].GetConcreteType(p_RadioChannel);
 		}
 	}
 }

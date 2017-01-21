@@ -139,7 +139,7 @@ namespace Wundee.Stories
 
 		public override bool Check()
 		{
-			var hasFlag = parentStoryNode.parentStory.parentSettlement.HasFlag(_settlementFlag);
+			var hasFlag = parentStoryNode.parentStory.parentPerson.HasFlag(_settlementFlag);
 
 			switch (@operator)
 			{
