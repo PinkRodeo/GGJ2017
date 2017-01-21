@@ -71,7 +71,7 @@ namespace RadioWaves
 
 			if (Input.GetKey(KeyCode.A))
 			{
-				transform.localPosition = localPos;
+				localPos.x += speed * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.D))
 			{
