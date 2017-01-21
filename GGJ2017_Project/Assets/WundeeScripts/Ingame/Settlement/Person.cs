@@ -34,8 +34,6 @@ namespace Wundee
 			Object[] assets = Resources.LoadAll (voiceFolder);
 			int ii;
 
-			Debug.Log (assets.Length);
-
 			audioClips = new AudioClip[assets.Length];
 
 			for (ii = 0; ii < assets.Length; ii++){
@@ -59,11 +57,13 @@ namespace Wundee
 			
 		}
 
+		public AudioClip[] GetAudioClips(){
+			return audioClips;
+		}
+
 		public void TuneIn()
 		{
 			ExecuteEffectFromDefinition(ref this.definition._onTuneInRewardDefinitions);
-
-			HAM.Game.speechController.SetClips (audioClips);
 		}
 		
 		public void Tick()

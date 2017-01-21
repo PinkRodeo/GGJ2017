@@ -15,13 +15,14 @@ namespace RadioWaves
 	{
 		public const string RADIOCHANNEL_TAG = "RadioChannelTag";
 
-		[Range(1f, 20f)] public float m_Range = 1f;
+		[Range(1f, 30f)] public float m_Range = 15f;
 
 		[HideInInspector] public Ether m_Ether;
 
 		private Transform m_Transform;
 		private SphereCollider m_SphereCollider;
 		private AudioSource m_AudioSource;
+		private AudioClip[] m_AudioClips;
 
 		public string DefinitionKey = "RC_DEFAULT";
 
@@ -55,11 +56,13 @@ namespace RadioWaves
 			m_AudioSource.maxDistance = m_Range;
 			m_AudioSource.spatialBlend = 1.0f;
 			m_AudioSource.spatialize = false;
+			m_AudioSource.dopplerLevel = 0.1f;
 		}
 
 		private void Start()
 		{
 			Wundee.Game.instance.definitions.radioChannelDefinitions[DefinitionKey].MakeConcreteType(this);
+			m_AudioClips = p_Person.GetAudioClips ();
 		}
 
 		// Update is called once per frame
@@ -77,6 +80,7 @@ namespace RadioWaves
 		public void TuneIn()
 		{
 			HAM.Game.speechController.SetSource (m_AudioSource);
+			HAM.Game.speechController.SetClips (m_AudioClips);
 			p_Person.TuneIn();
 		}
 	}
