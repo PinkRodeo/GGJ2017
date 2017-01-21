@@ -98,4 +98,51 @@ namespace Wundee.Stories
 	}
 
 
+	public class AddComboToDictionaryEffect : Effect
+	{
+		public string comboDefinitionKey;
+
+		public override void ParseParams(JsonData parameters)
+		{
+			comboDefinitionKey = ContentHelper.ParseString(parameters, "comboDefinitionKey", "BORK");
+		}
+
+		public override void ExecuteEffect()
+		{
+			var comboDefition = Wundee.Game.instance.definitions.comboDefinitions[comboDefinitionKey];
+
+			if (comboDefition == null)
+			{
+				Debug.LogError("[AddComboToDictionaryEffect] Could not find combo with key: " + comboDefinitionKey);
+				return;
+			}
+
+			HAM.Game.speechController.dictionaryUI.AddToDictionary(comboDefition);
+		}
+	}
+
+	public class RemoveComboFromDictionaryEffect : Effect
+	{
+		public string comboDefinitionKey;
+
+		public override void ParseParams (JsonData parameters)
+		{
+			comboDefinitionKey = ContentHelper.ParseString(parameters, "comboDefinitionKey", "BORK");
+		}
+
+		public override void ExecuteEffect ()
+		{
+			var comboDefition = Wundee.Game.instance.definitions.comboDefinitions[comboDefinitionKey];
+
+			if (comboDefition == null)
+			{
+				Debug.LogError("[RemoveComboFromDictionaryEffect] Could not find combo with key: " + comboDefinitionKey);
+				return;
+			}
+
+			HAM.Game.speechController.dictionaryUI.RemoveFromDictionary(comboDefition);
+
+		}
+	}
+
 }

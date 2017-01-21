@@ -92,7 +92,7 @@ namespace RadioWaves
 
 
 			var localPos = transform.localPosition;
-			var speed = 2f;
+			var speed = 20f;
 
 			if (Input.GetKey(KeyCode.A))
 			{

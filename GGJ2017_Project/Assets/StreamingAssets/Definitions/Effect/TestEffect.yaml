@@ -13,3 +13,9 @@
       onBreakoffEffects: 
         - type: "PrintEffect"
           params: "You're a jerk!"
+
+
+  "EFFECT_DICT_HELLO":
+    type: "AddComboToDictionaryEffect"
+    params: 
+      comboDefinitionKey: "COMBO_SAY_HELLO"

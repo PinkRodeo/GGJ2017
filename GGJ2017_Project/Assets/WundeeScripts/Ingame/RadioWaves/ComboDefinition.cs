@@ -12,6 +12,7 @@ namespace RadioWaves
 	public class ComboDefinition : Definition<ComboListener>
 	{
 		public string[] combo;
+		public string meaning;
 
 		public override void ParseDefinition(string definitionKey, JsonData jsonData)
 		{
@@ -29,6 +30,8 @@ namespace RadioWaves
 			{
 				Debug.Log("Invalid combo with key: " + definitionKey);
 			}
+
+			meaning = ContentHelper.ParseString(jsonData, "meaning", "<i>unknown</i>");
 		}
 
 		public override ComboListener GetConcreteType(object parent = null)
