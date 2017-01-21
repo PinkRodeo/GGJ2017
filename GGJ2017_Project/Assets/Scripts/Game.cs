@@ -43,7 +43,6 @@ namespace HAM
 		}
 
 		public static void SetStaticVolume (float volume){
-			Debug.Log (volume);
 			sStaticChannel.volume = volume;
 		}
 	}

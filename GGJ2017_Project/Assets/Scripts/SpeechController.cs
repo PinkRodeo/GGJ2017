@@ -37,13 +37,16 @@ public class SpeechController {
 	}
 
 	public void Say(string text){
-		int spaceCount = text.Split (' ').Length - 1;
-		currentSentence = text;
+		Clear ();
+		currentSentence = text;	
+		PlaySound ();
+	}
+
+	public void Clear(){
+		currentSentence = "";
 		currentIndex = 0;
 		rollingIndex = 0.0f;
 		guiText.text = "";
-
-		PlaySound ();
 	}
 
 	public void SetClips(AudioClip[] clips){
