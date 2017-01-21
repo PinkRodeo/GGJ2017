@@ -29,8 +29,11 @@ sysinfo.txt
 # Windows pls
 *.db*
 
+!/Assets/**/*.dll
+
 
 !/Assets/Extensions/FarseerPhysics.dll
+!/Assets/Extensions/FarseerPhysics.DLL
 !/Assets/Extensions/FarseerPhysics.dll.mdb
 !/Assets/Extensions/FarseerPhysics.XML
 !/Assets/Extensions/FarseerPhysics.pdb
