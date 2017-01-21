@@ -30,6 +30,8 @@ namespace Wundee
 
 
 		public DefinitionLoader<RadioChannelDefinition, RadioChannel> radioChannelDefinitions;
+		public DefinitionLoader<ComboDefinition, ComboListener> comboDefinitions;
+
 
 		public Dictionary<Type, object> definitionLoaderMapper;
 
@@ -50,7 +52,7 @@ namespace Wundee
 			conditionDefinitions = new DefinitionLoader<ConditionDefinition, Condition>(this);
 
 			radioChannelDefinitions = new DefinitionLoader<RadioChannelDefinition, RadioChannel>(this);
-
+			comboDefinitions = new DefinitionLoader<ComboDefinition, ComboListener>(this);
 
 			this.definitionLoaderMapper = new Dictionary<Type, object>(10);
 
@@ -65,6 +67,7 @@ namespace Wundee
 			definitionLoaderMapper[typeof (ConditionDefinition)] = conditionDefinitions;
 
 			definitionLoaderMapper[typeof(RadioChannelDefinition)] = radioChannelDefinitions;
+			definitionLoaderMapper[typeof(ComboDefinition)] = comboDefinitions;
 
 
 
@@ -102,7 +105,7 @@ namespace Wundee
 			conditionDefinitions.AddFolder("Condition");
 
 			radioChannelDefinitions.AddFolder("RadioChannel");
-
+			comboDefinitions.AddFolder("Combo");
 		}
 
 		public JsonData GetJsonDataFromFile(string filePath)

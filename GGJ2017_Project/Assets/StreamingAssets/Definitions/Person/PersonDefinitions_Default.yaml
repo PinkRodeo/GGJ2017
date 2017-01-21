@@ -5,6 +5,7 @@
         params: "StartReward"
 
     onTuneRewards:
+      - "REWARD_TEST_WAIT_FOR_COMBO"
       - type: "PrintEffect"
         params: "TuneReward"
       - type: "TransmitTextEffect"
