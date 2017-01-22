@@ -61,8 +61,21 @@ namespace HAM
 			sStaticChannel.volume = volume;
 		}
 
+		public static void LockAxis(string axis){
+			int knob = 1;
+			if (axis == "x") knob = 74;
+			if (axis == "y") knob = 71;
+			if (axis == "z") knob = 79;
+			midiController.DisableKnob (knob);
+			PlaySuccessSound ();
+		}
+
 		public static void UnlockAxis(string axis){
-			sPlayer.EnableAxis (axis);
+			int knob = 1;
+			if (axis == "x") knob = 74;
+			if (axis == "y") knob = 71;
+			if (axis == "z") knob = 79;
+			midiController.EnableKnob (knob);
 			PlaySuccessSound ();
 		}
 
