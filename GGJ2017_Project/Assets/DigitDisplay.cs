@@ -17,8 +17,7 @@ public class DigitDisplay : MonoBehaviour {
 		Object[] numbers = Resources.LoadAll ("t_numbers");
 
 		sprites = new Sprite[numbers.Length -1];
-
-		Debug.Log (sprites.Length);
+		
 		int ii;
 		for (ii = 1; ii < numbers.Length; ii++) {
 			sprites [ii-1] = numbers [ii] as Sprite;	

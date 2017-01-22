@@ -60,7 +60,7 @@
   "PERSON_INTROBOT":
     voiceKey: "Pidgeon"
     voiceVolume : "0.3"
-    portraitKey : "Portrait_1"
+    portraitKey : "Portrait_7"
 
     onTuneRewards:
       - type: "ConditionalEffect"
@@ -87,7 +87,7 @@
   "PERSON_INFO_BOT":
     voiceKey: "Robot"
     voiceVolume : "0.3"
-    portraitKey : "Portrait_1"
+    portraitKey : "Portrait_8"
 
     onTuneRewards:
       - type: "ConditionalEffect"
@@ -130,8 +130,9 @@
 
 
   "PERSON_GABE":
-      voiceKey: "Gabe"
-      voiceVolume: 1.0
+    voiceKey: "Gabe"
+    voiceVolume: 1.0
+    portraitKey: "Portrait_5"
 
-      onTuneRewards:
-        - "EFFECT_GABE_QUEUE"
+    onTuneRewards:
+      - "EFFECT_GABE_QUEUE"

@@ -190,11 +190,8 @@ namespace Wundee.Stories
 
 		public override void ExecuteEffect()
 		{
-			Logger.Log(effects.Length);
-
 			var randomNumber = R.Content.Next(effects.Length);
-			Logger.Log(randomNumber);
-
+			
 			effects[randomNumber].ExecuteEffect();
 		}
 	}
