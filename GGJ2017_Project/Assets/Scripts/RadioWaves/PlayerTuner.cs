@@ -31,11 +31,6 @@ namespace RadioWaves
 			m_SphereCollider = GetComponent<SphereCollider>();
 		}
 
-		IEnumerator StartColliding(){
-			yield return new WaitForSeconds(5);
-			m_SphereCollider.enabled = true;
-		}
-
 		private void Awake()
 		{
 			m_ConnectedChannels = new List<RadioChannel>();
@@ -47,31 +42,35 @@ namespace RadioWaves
 			HAM.Game.midiController.AddKnobListener(79, OnKnobZ);
 
 			m_SphereCollider.enabled = false;
-			StartCoroutine(StartColliding());
 			
 
 			HAM.Game.midiController.AddNoteListener ("c#1", (bool pressed) => {
 				if (!pressed) return;
+				m_SphereCollider.enabled = true;
 				AudioSource.PlayClipAtPoint(notes[0], transform.position, 0.35f);
 			});
 
 			HAM.Game.midiController.AddNoteListener ("d#1", (bool pressed) => {
 				if (!pressed) return;
+				m_SphereCollider.enabled = true;
 				AudioSource.PlayClipAtPoint(notes[1], transform.position, 0.35f);
 			});
 
 			HAM.Game.midiController.AddNoteListener ("f#1", (bool pressed) => {
 				if (!pressed) return;
+				m_SphereCollider.enabled = true;
 				AudioSource.PlayClipAtPoint(notes[2], transform.position, 0.35f);
 			});
 
 			HAM.Game.midiController.AddNoteListener ("g#1", (bool pressed) => {
 				if (!pressed) return;
+				m_SphereCollider.enabled = true;
 				AudioSource.PlayClipAtPoint(notes[3], transform.position, 0.35f);
 			});
 
 			HAM.Game.midiController.AddNoteListener ("a#1", (bool pressed) => {
 				if (!pressed) return;
+				m_SphereCollider.enabled = true;
 				AudioSource.PlayClipAtPoint(notes[4], transform.position, 0.35f);
 			});
 		}
