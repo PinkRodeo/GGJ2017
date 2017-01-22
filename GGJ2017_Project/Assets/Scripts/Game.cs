@@ -86,6 +86,16 @@ namespace HAM
 		public static void PlaySuccessSound(float volume = 0.25f){
 			AudioSource.PlayClipAtPoint(successSound, sPlayer.transform.position, volume);
 		}
+
+
+		public static Vector3 PosToChannel(Vector3 pos){
+			Vector3 channel = new Vector3 ();
+			channel.x = Mathf.Round ((pos.x / 127) * (170 - 54) + 54);
+			channel.y = Mathf.Round ((pos.y / 127) * (100));
+			channel.z = Mathf.Round ((pos.z / 127) * (214 - 27) + 27);
+
+			return channel;
+		}
 	}
 
 }
