@@ -150,4 +150,19 @@ namespace Wundee.Stories
 		}
 	}
 
+	public class UnlockAxisEffect : Effect
+	{
+		private string _Axis;
+
+		public override void ParseParams(JsonData parameters)
+		{
+			_Axis = parameters.ToString();
+		}
+
+		public override void ExecuteEffect()
+		{
+			HAM.Game.UnlockAxis (_Axis);
+		}
+	}
+
 }

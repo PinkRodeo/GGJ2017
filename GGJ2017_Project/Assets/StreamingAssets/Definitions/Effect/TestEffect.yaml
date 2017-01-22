@@ -21,16 +21,16 @@
       comboDefinitionKey: "COMBO_SAY_HELLO"
 
   "EFFECT_UNLOCK_X":
-    type: "PrintEffect"
-    params: "Unlocked the x-axis"
+    type: "UnlockAxisEffect"
+    params: "x"
 
   "EFFECT_UNLOCK_Y":
-    type: "PrintEffect"
-    params: "Unlocked the y-axis"
+    type: "UnlockAxisEffect"
+    params: "y"
 
   "EFFECT_UNLOCK_Z":
-    type: "PrintEffect"
-    params: "Unlocked the z-axis"
+    type: "UnlockAxisEffect"
+    params: "z"
 
 
 ## INTRO BOT ##

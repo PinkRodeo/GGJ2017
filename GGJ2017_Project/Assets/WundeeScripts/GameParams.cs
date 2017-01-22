@@ -91,6 +91,7 @@ namespace Wundee
 	{
 		public static string TEXT = "text";
 		public static string PORTRAITKEY = "portraitKey";
+		public static string UNLOCKAXIS = "unlockAxis";
 
 		// Stories
 		public const string START_NODE = "startNode";
