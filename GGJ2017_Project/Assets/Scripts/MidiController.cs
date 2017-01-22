@@ -28,6 +28,11 @@ public class MidiController {
 	List<NoteListener> noteListeners;
 	List<KnobListener> knobListeners;
 
+
+	float knobX = 0.0f;
+	float knobY = 0.0f;
+	float knobZ = 0.0f;
+
 	// Use this for initialization
 	public MidiController () {
 		MidiJack.MidiMaster.knobDelegate = OnKnob;
@@ -59,6 +64,41 @@ public class MidiController {
 		}
 		if (Input.GetKeyDown(KeyCode.N)){
 			OnNoteOn (MidiJack.MidiChannel.All, 58, 1);
+		}
+
+
+		if (Input.GetKey(KeyCode.Q)){
+			knobX += 1f / 96f;
+			Debug.Log (knobX);
+			knobX = Mathf.Min (1, knobX);
+			OnKnob (MidiJack.MidiChannel.All, 74, knobX);
+		}
+		if (Input.GetKey(KeyCode.A)){
+			knobX -= 1f / 96f;
+			knobX = Mathf.Max (0, knobX);
+			OnKnob (MidiJack.MidiChannel.All, 74, knobX);
+		}
+
+		if (Input.GetKey(KeyCode.W)){
+			knobY += 1f / 96f;
+			knobY = Mathf.Min (1, knobY);
+			OnKnob (MidiJack.MidiChannel.All, 71, knobY);
+		}
+		if (Input.GetKey(KeyCode.S)){
+			knobY -= 1f / 96f;
+			knobY = Mathf.Max (0, knobY);
+			OnKnob (MidiJack.MidiChannel.All, 71, knobY);
+		}
+
+		if (Input.GetKey(KeyCode.E)){
+			knobZ += 1f / 96f;
+			knobZ = Mathf.Min (1, knobZ);
+			OnKnob (MidiJack.MidiChannel.All, 79, knobZ);
+		}
+		if (Input.GetKey(KeyCode.D)){
+			knobZ -= 1f / 96f;
+			knobZ = Mathf.Max (0, knobZ);
+			OnKnob (MidiJack.MidiChannel.All, 79, knobZ);
 		}
 	}
 
