@@ -62,6 +62,10 @@ namespace Wundee
 			return audioClips;
 		}
 
+		public float GetAudioVolume(){
+			return definition.voiceVolume;
+		}
+
 		public void TuneIn()
 		{
 

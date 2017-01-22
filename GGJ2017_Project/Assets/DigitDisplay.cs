@@ -22,7 +22,6 @@ public class DigitDisplay : MonoBehaviour {
 		int ii;
 		for (ii = 1; ii < numbers.Length; ii++) {
 			sprites [ii-1] = numbers [ii] as Sprite;	
-			Debug.Log (numbers[ii].name);
 		}
 
 		HAM.Game.midiController.AddKnobListener (knobId, OnKnob);
