@@ -18,3 +18,7 @@
   "RC_FRIEND1":
     channelName: "Your Friend #1"
     personDefinitionKey: "PERSON_FRIEND1"
+  
+  "RC_GABE":
+    channelName: "Never Forget"
+    personDefinitionKey: "PERSON_GABE"

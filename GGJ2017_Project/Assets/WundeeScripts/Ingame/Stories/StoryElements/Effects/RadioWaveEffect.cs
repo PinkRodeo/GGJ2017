@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 using RadioWaves;
 using HAM;
 using LitJson;
-using UnityEditor;
 
 namespace Wundee.Stories
 {
@@ -175,7 +175,7 @@ namespace Wundee.Stories
 		{
 			Debug.Log(_Axis);
 
-			//GameObject.FindGameObjectWithTag(_Axis).SetActive(true);
+			GameObject.FindGameObjectWithTag(_Axis).transform.DOLocalMoveZ(-0.5546f, 0.5f);
 
 			HAM.Game.UnlockAxis (_Axis);
 		}
@@ -198,6 +198,18 @@ namespace Wundee.Stories
 		{
 			HAM.Game.speechController.dictionaryUI.AddToDictionary(_position);
 
+		}
+	}
+
+	public class ClearCombosEffect : Effect
+	{
+		public override void ParseParams(JsonData parameters)
+		{
+		}
+
+		public override void ExecuteEffect()
+		{
+			HAM.Game.midiController.ClearComboListeners();
 		}
 	}
 }
