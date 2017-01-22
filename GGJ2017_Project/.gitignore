@@ -30,7 +30,7 @@ sysinfo.txt
 *.db*
 
 !/Assets/**/*.dll
-
+!*.obj
 
 !/Assets/Extensions/FarseerPhysics.dll
 !/Assets/Extensions/FarseerPhysics.DLL
