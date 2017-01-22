@@ -50,7 +50,7 @@
   "EFFECT_INTROBOT_1_2":
     type: "TransmitTextEffect"
     params:
-      text: "You will communicate using the language of the radio: Musical Notes!\nYou already learned the melody to ask somebody to continue."
+      text: "You will communicate using the language of the radio: Musical Notes!\nYou just learned how to ask somebody to continue."
       onConfirmEffects:
         - "EFFECT_INTROBOT_2"
 
