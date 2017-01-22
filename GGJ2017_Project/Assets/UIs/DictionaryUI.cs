@@ -166,17 +166,7 @@ namespace HAM
 		
 		protected void Update()
 		{
-		/*
-			if (Input.GetKeyDown(KeyCode.Z))
-			{
-				SetVisible(true);
-			}
 
-			if (Input.GetKeyUp(KeyCode.Z))
-			{
-				SetVisible(false);
-			}
-			*/
 		}
 		
 
