@@ -14,3 +14,7 @@
     channelName: "The info station"
 
     personDefinitionKey: "PERSON_INFO_BOT"
+
+  "RC_FRIEND1":
+    channelName: "Your Friend #1"
+    personDefinitionKey: "PERSON_FRIEND1"

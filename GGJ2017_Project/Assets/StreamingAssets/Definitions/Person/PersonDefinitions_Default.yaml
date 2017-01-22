@@ -61,7 +61,7 @@
     onStartRewards:
       - type: "AddComboToDictionaryEffect"
         params: 
-          comboDefinitionKey: "CONFIRM_COMBO"
+          comboDefinitionKey: "COMBO_CONFIRM"
 
     onTuneRewards:
       - "EFFECT_INTROBOT_1"
@@ -86,11 +86,25 @@
                       - type: "AddWorldFlagEffect"
                         params: {flag: "INFOBOT_INTRO_GIVEN"}
                       - "EFFECT_INFO_BOT_QUEUE"
+                      - "EFFECT_UNLOCK_Y"
             - conditions: []
               effects:
                 - "EFFECT_INFO_BOT_QUEUE"
 
 
+  "PERSON_FRIEND1":
+    voiceKey: "B"
+
+
+    onTuneRewards:
+      - type: "ConditionalEffect"
+        params:
+          statements:
+            - conditions:
+              - type: "WorldFlagCondition"
+                params: {flag: "FRIEND1_HELPED", operator: "NotEquals"}
+              effects:
+                - "EFFECT_FR1_START_CONVERSATION_1"
 
 
 

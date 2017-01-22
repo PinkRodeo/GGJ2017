@@ -25,7 +25,12 @@ namespace Wundee.Stories
 
 			var paramsObject = jsonData[D.PARAMS];
 			if (paramsObject != null)
+			{
+				//Terse logging
+				//Logger.Log(masterCopy.definition.definitionKey);
 				masterCopy.ParseParams(paramsObject);
+
+			}
 
 		}
 

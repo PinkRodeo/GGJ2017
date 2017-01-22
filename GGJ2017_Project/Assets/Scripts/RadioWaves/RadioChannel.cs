@@ -79,7 +79,7 @@ namespace RadioWaves
 				HAM.Game.speechController.transmissionUI.TextContent = "";
 				HAM.Game.speechController.transmissionUI.PortraitTexture.overrideSprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Textures/Portraits/" + p_Person.definition.portraitKey + ".png", typeof(Sprite));
 
-				if (inTuneTimer > 1.5f) {
+				if (inTuneTimer > 0.6f) {
 					connected = true;
 					p_Person.TuneIn();
 				}

@@ -92,8 +92,6 @@ namespace HAM
 				panelContents += " = " + p_ComboDefinition.meaning;
 
 				textComponent.text = panelContents;
-				Debug.Log(panelContents);
-
 				m_DictionaryPanels.Add(p_ComboDefinition, newDictionaryPanel);
 			}
 		}

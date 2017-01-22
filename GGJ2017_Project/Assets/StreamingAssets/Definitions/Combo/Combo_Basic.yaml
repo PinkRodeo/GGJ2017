@@ -1,10 +1,10 @@
 ---
-  "CONFIRM_COMBO":
+  "COMBO_CONFIRM":
     combo: ["c#1", "d#1"]
     meaning: "Uh-Huh"
 
   "COMBO_SAY_HELLO":
-    combo: ["c1", "d1", "e1"]
+    combo: ["d#1", "d#1", "f#1"]
     meaning: "Greetings"
       
 
