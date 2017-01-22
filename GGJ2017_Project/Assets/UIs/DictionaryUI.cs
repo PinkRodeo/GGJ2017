@@ -64,10 +64,11 @@ namespace HAM
 
 		protected void Start()
 		{
-			//AddToDictionary(Wundee.Game.instance.definitions.comboDefinitions["COMBO_SAY_HELLO"]);
+			/*
 			HAM.Game.midiController.AddNoteListener ("c1", (bool pressed) => {
 				SetVisible(pressed);	
 			});
+			*/
 		}
 
 		public void AddToDictionary(ComboDefinition p_ComboDefinition)
