@@ -3123,7 +3123,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 620962222}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32.6, y: 0, z: 0}
+  m_LocalPosition: {x: 0.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 527235142}
@@ -4020,9 +4020,114 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.7776393
       objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: d22afac67dad3164980c8892e13eb2df, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.05712839
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: d22afac67dad3164980c8892e13eb2df, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: d22afac67dad3164980c8892e13eb2df, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: d22afac67dad3164980c8892e13eb2df, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99836683
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: d22afac67dad3164980c8892e13eb2df, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 6.55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d22afac67dad3164980c8892e13eb2df, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &819544402 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100012, guid: d22afac67dad3164980c8892e13eb2df, type: 3}
+  m_PrefabInternal: {fileID: 819544401}
+--- !u!1 &819544403 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100010, guid: d22afac67dad3164980c8892e13eb2df, type: 3}
+  m_PrefabInternal: {fileID: 819544401}
+--- !u!1 &819544404 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100008, guid: d22afac67dad3164980c8892e13eb2df, type: 3}
+  m_PrefabInternal: {fileID: 819544401}
+--- !u!1 &819544405 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100006, guid: d22afac67dad3164980c8892e13eb2df, type: 3}
+  m_PrefabInternal: {fileID: 819544401}
+--- !u!1 &819544406 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100004, guid: d22afac67dad3164980c8892e13eb2df, type: 3}
+  m_PrefabInternal: {fileID: 819544401}
+--- !u!114 &819544407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 819544402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c16c7d77e28a04f86244277c540e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Note: a#1
+  m_IsAnimatingDown: 0
+--- !u!114 &819544408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 819544403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c16c7d77e28a04f86244277c540e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Note: g#1
+  m_IsAnimatingDown: 0
+--- !u!114 &819544409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 819544404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c16c7d77e28a04f86244277c540e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Note: f#1
+  m_IsAnimatingDown: 0
+--- !u!114 &819544410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 819544405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c16c7d77e28a04f86244277c540e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Note: d#1
+  m_IsAnimatingDown: 0
+--- !u!114 &819544411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 819544406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c16c7d77e28a04f86244277c540e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Note: c#1
+  m_IsAnimatingDown: 0
 --- !u!1 &821937650
 GameObject:
   m_ObjectHideFlags: 0

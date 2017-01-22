@@ -7,6 +7,11 @@
     combo: ["d#1", "d#1", "f#1"]
     meaning: "Greetings"
       
+  "COMBO_CHEAT":
+    combo: ["d#1", "d#1", "d#1", "c#1", "d#1", "f#1"]
+    meaning: "the fat one"
+
+
 
 
 

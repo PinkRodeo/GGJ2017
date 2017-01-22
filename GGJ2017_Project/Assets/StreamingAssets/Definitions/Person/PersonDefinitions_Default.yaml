@@ -24,7 +24,7 @@
                 effects: 
                   - type: "TransmitTextEffect"
                     params: 
-                    text: "I am really glad to have someone to talk to."
+                      text: "I am really glad to have someone to talk to."
                
           onBreakoffEffects: 
             - type: "PrintEffect"
@@ -68,6 +68,13 @@
 
     onTuneRewards:
       - "EFFECT_INTROBOT_1"
+      - type: "WaitForCombo"
+        params: 
+          comboDefinition: "COMBO_CHEAT"
+          effects:
+            - "EFFECT_UNLOCK_X"
+            - "EFFECT_UNLOCK_Y"
+            - "EFFECT_UNLOCK_Z"
 
 
 
