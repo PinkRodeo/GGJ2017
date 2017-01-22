@@ -144,8 +144,12 @@ public class MidiController {
 					break;
 				}
 			}
-			if (isComplete) {
+
+			if (isComplete) 
+			{
 				listener.callback ();
+				comboListeners.Remove(listener);
+
 			}
 		}
 

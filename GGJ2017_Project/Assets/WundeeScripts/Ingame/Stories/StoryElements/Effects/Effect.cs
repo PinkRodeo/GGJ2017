@@ -42,6 +42,10 @@ namespace Wundee.Stories
 		protected Condition[] conditions;
 		private Definition<Condition>[] _conditionDefinitions;
 
+		protected Effect[] elseEffects;
+		private Definition<Effect>[] _elseEffectDefinitions;
+
+
 		private KeyValuePair<Definition<Condition>[], Definition<Effect>[]>[] _conditionEffectPairsDefinition;
 		private KeyValuePair<Condition[], Effect[]>[] _conditionEffectPairs;
 
@@ -55,6 +59,15 @@ namespace Wundee.Stories
 
 				_effectDefinitions = EffectDefinition.ParseDefinitions(parameters[D.EFFECTS], definition.definitionKey);
 				_conditionDefinitions = ConditionDefinition.ParseDefinitions(parameters[D.CONDITIONS], definition.definitionKey);
+
+				if (parameters.Keys.Contains("elseEffects"))
+				{
+					_elseEffectDefinitions = EffectDefinition.ParseDefinitions(parameters["elseEffects"], definition.definitionKey);
+				}
+				else
+				{
+					_elseEffectDefinitions = new Definition<Effect>[0];
+				}
 			}
 			else
 			{
@@ -83,6 +96,7 @@ namespace Wundee.Stories
 			{
 				retValue.conditions = _conditionDefinitions.GetConcreteTypes(parent);
 				retValue.effects = _effectDefinitions.GetConcreteTypes(parent);
+				retValue.elseEffects = _elseEffectDefinitions.GetConcreteTypes(parent);
 			}
 			else if (_type == ConditionalType.MultiplePairs)
 			{
@@ -107,6 +121,10 @@ namespace Wundee.Stories
 				{
 					effects.ExecuteEffects();
 				}
+				else
+				{
+					elseEffects.ExecuteEffects();
+				}
 			}
 			else
 			{
@@ -121,6 +139,36 @@ namespace Wundee.Stories
 			}
 
 		}
+	}
+
+	public class BreakLoopEffect : Effect
+	{
+		protected Definition<Effect>[] _effectDefinitions;
+		public BreakLoopEffect original;
+		
+
+
+		public override void ParseParams(JsonData parameters)
+		{
+			_effectDefinitions = EffectDefinition.ParseDefinitions(parameters[D.EFFECTS], definition.definitionKey);
+		}
+
+		public override void ExecuteEffect()
+		{
+			var effects = original._effectDefinitions.GetConcreteTypes(parentStoryNode);
+			effects.ExecuteEffects();
+		}
+
+		public override Effect GetClone(StoryNode parent)
+		{
+			var clone =  base.GetClone(parent) as BreakLoopEffect;
+
+			clone.original = this;
+
+			return clone;
+		}
+
+		
 	}
 
 	public class RandomEffect : CollectionEffect
@@ -142,7 +190,11 @@ namespace Wundee.Stories
 
 		public override void ExecuteEffect()
 		{
+			Logger.Log(effects.Length);
+
 			var randomNumber = R.Content.Next(effects.Length);
+			Logger.Log(randomNumber);
+
 			effects[randomNumber].ExecuteEffect();
 		}
 	}

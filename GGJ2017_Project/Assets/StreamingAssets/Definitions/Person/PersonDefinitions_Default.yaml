@@ -23,12 +23,75 @@
                 effects: 
                   - type: "TransmitTextEffect"
                     params: 
-                      text: "I am really glad to have someone to talk to."
+                    text: "I am really glad to have someone to talk to."
                
           onBreakoffEffects: 
             - type: "PrintEffect"
               params: "You're a jerk!"
 
- 
+  "PERSON_DEFAULT_01":
+    voiceKey : "A"
+
+    onStartRewards:
+      - type: "PrintEffect"
+        params: "BLOBLO"
+
+      - type: "ConditionalEffect"
+        params: 
+          statements:
+            - conditions:
+                - type: "WorldFlagCondition"
+                  params: {flag: "DoesRuckusMakerExist", operator: "NotEquals"}
+              effects:
+                - type: "AddWorldFlagEffect"
+                  params: {flag: "DoesRuckusMakerExist"}
+                - type: "AddStoryEffect"
+                  params: {storyKey: "STORY_TEST_AFFECT_NEIGHBOURS"}
+            - conditions: []
+              effects: 
+                - type: "RandomEffect"
+                  params: 
+                    effects:
+                    - type: "AddStoryEffect"
+                      params: {storyKey: "STORY_TEST_NOTHING"}
+
+  "PERSON_INTROBOT":
+    voiceKey: "Robot"
+
+    onStartRewards:
+      - type: "AddComboToDictionaryEffect"
+        params: 
+          comboDefinitionKey: "CONFIRM_COMBO"
+
+    onTuneRewards:
+      - "EFFECT_INTROBOT_1"
+
+
+
+  "PERSON_INFO_BOT":
+    voiceKey: "Robot"
+
+    onTuneRewards:
+      - type: "ConditionalEffect"
+        params:
+          statements:
+            - conditions:
+                - type: "WorldFlagCondition"
+                  params: {flag: "INFOBOT_INTRO_GIVEN", operator: "NotEquals"}
+              effects:
+                - type: "TransmitTextEffect"
+                  params: 
+                    text: "I am InfoBot. I am the information hub for this space."
+                    onCompleteEffects: 
+                      - type: "AddWorldFlagEffect"
+                        params: {flag: "INFOBOT_INTRO_GIVEN"}
+                      - "EFFECT_INFO_BOT_QUEUE"
+            - conditions: []
+              effects:
+                - "EFFECT_INFO_BOT_QUEUE"
+
+
+
+
 
 

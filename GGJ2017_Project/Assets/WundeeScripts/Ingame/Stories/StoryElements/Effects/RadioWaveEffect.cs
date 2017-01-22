@@ -54,7 +54,12 @@ namespace Wundee.Stories
 			HAM.Game.speechController.Say(_TextToTransmit, 
 				() =>
 				{
-					parentStoryNode.parentStory.parentPerson.ExecuteEffectFromDefinition(ref _onCompleteEffects);
+					var confirmComboDef = Wundee.Game.instance.definitions.comboDefinitions["CONFIRM_COMBO"];
+					HAM.Game.midiController.AddComboListener(confirmComboDef.combo, () =>
+					{
+						parentStoryNode.parentStory.parentPerson.ExecuteEffectFromDefinition(ref _onCompleteEffects);
+
+					});
 				},
 				() =>
 				{

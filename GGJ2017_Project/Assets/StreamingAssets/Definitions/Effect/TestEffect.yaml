@@ -19,3 +19,49 @@
     type: "AddComboToDictionaryEffect"
     params: 
       comboDefinitionKey: "COMBO_SAY_HELLO"
+
+
+
+
+  "EFFECT_INTROBOT_1":
+    type: "TransmitTextEffect"
+    params:
+      text: "Welcome to the H.A.M. network."
+      onCompleteEffects:
+        - "EFFECT_INTROBOT_2"
+
+
+  "EFFECT_INTROBOT_2":
+    type: "TransmitTextEffect"
+    params:
+      text: "We hope you enjoy your stay."
+      onCompleteEffects:
+        - type: "PrintEffect"
+          params: "Unlocked the x-axis"
+
+
+  "EFFECT_INFO_BOT_QUEUE":
+    type: "RandomEffect"
+    params: 
+      effects:
+      - EFFECT_INFO_BOT_Q1
+ 
+  "EFFECT_INFO_BOT_RETURN_TO_QUEUE":
+    type: "BreakLoopEffect"
+    params:
+      effects:
+        - "EFFECT_INFO_BOT_QUEUE"
+
+  "EFFECT_INFO_BOT_Q1":
+    type: "ConditionalEffect"
+    params:
+      conditions:
+        - type: "WorldFlagCondition"
+          params: {flag: "FRIEND1_SOLVED", operator: "NotEquals"}
+      effects:
+        - type: "TransmitTextEffect"
+          params:
+            text: "Friend 1 is still sad..."
+            onCompleteEffects:
+              - "EFFECT_INFO_BOT_QUEUE"
+      elseEffects: ["EFFECT_INFO_BOT_RETURN_TO_QUEUE"]
