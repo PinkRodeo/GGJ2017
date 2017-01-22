@@ -194,7 +194,13 @@ public class MidiController {
 	void OnKnob(MidiJack.MidiChannel channel, int knobNumber, float knobValue){
 		int ii;
 
+		if (knobNumber == 1) {
+			knobNumber = 74;
+		}
 
+		if (knobNumber == 81) {
+			knobNumber = 79;
+		}
 
 		if (disabledKnobs.Contains (knobNumber)) {
 			return;

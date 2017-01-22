@@ -39,6 +39,10 @@ namespace HAM
 			sPlayer = player;
 
 			successSound = Resources.Load ("sfx_success") as AudioClip;
+
+			HAM.Game.LockAxis ("x");
+			HAM.Game.LockAxis ("y");
+			HAM.Game.LockAxis ("z");
 		}
 
 		void Update(){
