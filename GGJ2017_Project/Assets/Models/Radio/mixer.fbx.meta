@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: ba6e3824e823c184695ff2f322e12fbc
+timeCreated: 1485066315
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Amp
+    100004: Amp.001
+    100006: Amp.002
+    100008: cd_player
+    100010: cd_player.001
+    100012: Dials
+    100014: Dials.001
+    100016: Dials.002
+    100018: Finder
+    100020: Finder.001
+    100022: KeyBoard
+    100024: Mixer
+    100026: Mixer.001
+    100028: Note.000
+    100030: Note.001
+    100032: Note.002
+    100034: Note.003
+    100036: Note.004
+    100038: Plane
+    100040: Speaker
+    100042: Speaker.001
+    400000: //RootNode
+    400002: Amp
+    400004: Amp.001
+    400006: Amp.002
+    400008: cd_player
+    400010: cd_player.001
+    400012: Dials
+    400014: Dials.001
+    400016: Dials.002
+    400018: Finder
+    400020: Finder.001
+    400022: KeyBoard
+    400024: Mixer
+    400026: Mixer.001
+    400028: Note.000
+    400030: Note.001
+    400032: Note.002
+    400034: Note.003
+    400036: Note.004
+    400038: Plane
+    400040: Speaker
+    400042: Speaker.001
+    2300000: //RootNode
+    2300002: Amp
+    2300004: Amp.001
+    2300006: Amp.002
+    2300008: cd_player
+    2300010: cd_player.001
+    2300012: Dials
+    2300014: Dials.001
+    2300016: Dials.002
+    2300018: Finder
+    2300020: Finder.001
+    2300022: KeyBoard
+    2300024: Mixer
+    2300026: Mixer.001
+    2300028: Note.000
+    2300030: Note.001
+    2300032: Note.002
+    2300034: Note.003
+    2300036: Note.004
+    2300038: Plane
+    2300040: Speaker
+    2300042: Speaker.001
+    3300000: //RootNode
+    3300002: Amp
+    3300004: Amp.001
+    3300006: Amp.002
+    3300008: cd_player
+    3300010: cd_player.001
+    3300012: Dials
+    3300014: Dials.001
+    3300016: Dials.002
+    3300018: Finder
+    3300020: Finder.001
+    3300022: KeyBoard
+    3300024: Mixer
+    3300026: Mixer.001
+    3300028: Note.000
+    3300030: Note.001
+    3300032: Note.002
+    3300034: Note.003
+    3300036: Note.004
+    3300038: Plane
+    3300040: Speaker
+    3300042: Speaker.001
+    4300000: Mixer
+    4300002: Note.004
+    4300004: Note.003
+    4300006: Note.002
+    4300008: Note.000
+    4300010: Note.001
+    4300012: KeyBoard
+    4300014: Plane
+    4300016: Dials.002
+    4300018: Amp.002
+    4300020: Finder.001
+    4300022: Amp.001
+    4300024: cd_player.001
+    4300026: Dials.001
+    4300028: Mixer.001
+    4300030: Speaker.001
+    4300032: Speaker
+    4300034: Dials
+    4300036: cd_player
+    4300038: Amp
+    4300040: Finder
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

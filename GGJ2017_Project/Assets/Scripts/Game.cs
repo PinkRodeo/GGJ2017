@@ -8,10 +8,13 @@ namespace HAM
 	public class Game : MonoBehaviour
 	{
 		public AudioSource staticChannel;
+		public RadioWaves.PlayerTuner player;
 
 		public static MidiController midiController;
 		public static SpeechController speechController;
+
 		private static AudioSource sStaticChannel;
+		private static RadioWaves.PlayerTuner sPlayer;
 		
 		public TransmissionUI transmissionUI;
 		public DictionaryUI dictionaryUI;
@@ -32,6 +35,7 @@ namespace HAM
 			//midiController.AddComboListener(combo, ComboTest);
 
 			sStaticChannel = staticChannel;
+			sPlayer = player;
 		}
 
 		void Update(){
@@ -52,6 +56,10 @@ namespace HAM
 
 		public static void SetStaticVolume (float volume){
 			sStaticChannel.volume = volume;
+		}
+
+		public static void UnlockAxis(string axis){
+			sPlayer.EnableAxis (axis);
 		}
 	}
 

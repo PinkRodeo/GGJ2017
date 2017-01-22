@@ -69,7 +69,6 @@ public class MidiController {
 
 		if (Input.GetKey(KeyCode.Q)){
 			knobX += 1f / 96f;
-			Debug.Log (knobX);
 			knobX = Mathf.Min (1, knobX);
 			OnKnob (MidiJack.MidiChannel.All, 74, knobX);
 		}
@@ -130,6 +129,8 @@ public class MidiController {
 		string name = NoteToString (noteNumber);
 		lastNotes.Add (name);
 
+		Debug.Log (comboListeners.Count);
+
 		int ii;
 		int jj;
 		for (ii = comboListeners.Count - 1; ii >= 0; ii--) {
@@ -138,6 +139,11 @@ public class MidiController {
 			for (jj = 0; jj < listener.combo.Length; jj++) {
 				int k = listener.combo.Length -1 - jj;
 				int p = lastNotes.Count - 1 - jj;
+
+				if (p < 0) {
+					isComplete = false;
+					break;
+				}
 
 				if (lastNotes [p] != listener.combo [k]) {
 					isComplete = false;
