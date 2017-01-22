@@ -31,6 +31,11 @@ namespace RadioWaves
 			m_SphereCollider = GetComponent<SphereCollider>();
 		}
 
+		IEnumerator StartColliding(){
+			yield return new WaitForSeconds(5);
+			m_SphereCollider.enabled = true;
+		}
+
 		private void Awake()
 		{
 			m_ConnectedChannels = new List<RadioChannel>();
@@ -40,6 +45,9 @@ namespace RadioWaves
 			HAM.Game.midiController.AddKnobListener(74, OnKnobX);
 			HAM.Game.midiController.AddKnobListener(71, OnKnobY);
 			HAM.Game.midiController.AddKnobListener(79, OnKnobZ);
+
+			m_SphereCollider.enabled = false;
+			StartCoroutine(StartColliding());
 			
 
 			HAM.Game.midiController.AddNoteListener ("c#1", (bool pressed) => {
