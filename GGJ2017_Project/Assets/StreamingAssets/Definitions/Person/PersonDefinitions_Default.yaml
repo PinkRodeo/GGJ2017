@@ -61,11 +61,6 @@
     voiceKey: "Robot"
     voiceVolume : "0.3"
 
-    onStartRewards:
-      - type: "AddComboToDictionaryEffect"
-        params: 
-          comboDefinitionKey: "COMBO_CONFIRM"
-
     onTuneRewards:
       - "EFFECT_INTROBOT_1"
       - type: "WaitForCombo"

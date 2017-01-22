@@ -16,6 +16,9 @@ namespace Wundee.Stories
 
 
 		protected Definition<Effect>[] _onCompleteEffects;
+
+		protected Definition<Effect>[] _onConfirmEffects;
+
 		protected Definition<Effect>[] _onBreakoffEffects;
 
 
@@ -39,6 +42,12 @@ namespace Wundee.Stories
 			else
 				_onCompleteEffects = new Definition<Effect>[0];
 
+			if (keys.Contains("onConfirmEffects"))
+				_onConfirmEffects = EffectDefinition.ParseDefinitions(parameters["onConfirmEffects"], definition.definitionKey);
+			else
+				_onConfirmEffects = new Definition<Effect>[0];
+
+
 			if (keys.Contains(D.EFFECTS_ON_BREAKOFF))
 				_onBreakoffEffects = EffectDefinition.ParseDefinitions(parameters[D.EFFECTS_ON_BREAKOFF], definition.definitionKey);
 			else
@@ -54,10 +63,13 @@ namespace Wundee.Stories
 			HAM.Game.speechController.Say(_TextToTransmit, 
 				() =>
 				{
+					parentStoryNode.parentStory.parentPerson.ExecuteEffectFromDefinition(ref _onCompleteEffects);
+
+
 					var confirmComboDef = Wundee.Game.instance.definitions.comboDefinitions["COMBO_CONFIRM"];
 					HAM.Game.midiController.AddComboListener(confirmComboDef.combo, () =>
 					{
-						parentStoryNode.parentStory.parentPerson.ExecuteEffectFromDefinition(ref _onCompleteEffects);
+						parentStoryNode.parentStory.parentPerson.ExecuteEffectFromDefinition(ref _onConfirmEffects);
 
 					});
 				},
