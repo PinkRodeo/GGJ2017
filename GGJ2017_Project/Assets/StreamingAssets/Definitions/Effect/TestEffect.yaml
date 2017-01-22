@@ -71,7 +71,9 @@
     type: "RandomEffect"
     params: 
       effects:
-        - EFFECT_INFO_BOT_Q1
+        - "EFFECT_INFO_BOT_Q1"
+        - "EFFECT_INFO_BOT_Q2"
+        - "EFFECT_INFO_BOT_Q3"
  
   "EFFECT_INFO_BOT_RETURN_TO_QUEUE":
     type: "BreakLoopEffect"
@@ -88,21 +90,33 @@
       effects:
         - type: "TransmitTextEffect"
           params:
-            text: "Friend 1 is still sad..."
+            text: "Somebody is feeling sad at 95 AM..."
             onCompleteEffects:
               - type: AddLocationEffect
                 params: {x: 45.2, y: -1, z: -1}
             onConfirmEffects:
-              - "EFFECT_INFO_BOT_QUEUE"
+              - "EFFECT_INFO_BOT_RETURN_TO_QUEUE"
       elseEffects: ["EFFECT_INFO_BOT_RETURN_TO_QUEUE"]
 
+  "EFFECT_INFO_BOT_Q2":
+    type: "TransmitTextEffect"
+    params:
+      text: "Remember to eat healthy."
+      onConfirmEffects:
+        - "EFFECT_INFO_BOT_RETURN_TO_QUEUE"
 
+  "EFFECT_INFO_BOT_Q3":
+    type: "TransmitTextEffect"
+    params:
+      text: "Someday I dream of opening my own restaurant."
+      onConfirmEffects:
+        - "EFFECT_INFO_BOT_RETURN_TO_QUEUE"
 
 ## FRIEND 1 ##
   "EFFECT_FR1_START_CONVERSATION_1":
     type: "TransmitTextEffect"
     params:
-      text: "Hello it's me, who are you?"
+      text: "Hello there, who are you?"
       onCompleteEffects:
         - type: "AddComboToDictionaryEffect"
           params: {comboDefinitionKey: "COMBO_SAY_HELLO"}
