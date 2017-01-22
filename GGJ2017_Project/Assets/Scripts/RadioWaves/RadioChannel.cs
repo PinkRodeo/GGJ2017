@@ -78,9 +78,9 @@ namespace RadioWaves
 				HAM.Game.speechController.transmissionUI.SetVisible(true);
 				HAM.Game.speechController.transmissionUI.TextContent = "";
 				string path = "Portraits/" + p_Person.definition.portraitKey;
-				Sprite sprite = Resources.LoadAll(path)[1] as Sprite;
-				Debug.Log (path);
-				Debug.Log (sprite);
+				var loadedResource = Resources.LoadAll(path);
+				
+				Sprite sprite = loadedResource[1] as Sprite;
 				HAM.Game.speechController.transmissionUI.PortraitTexture.overrideSprite = sprite;
 
 				if (inTuneTimer > 0.6f) {
