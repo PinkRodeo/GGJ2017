@@ -15,6 +15,7 @@ namespace HAM
 
 		private static AudioSource sStaticChannel;
 		private static RadioWaves.PlayerTuner sPlayer;
+		private static AudioClip successSound;
 		
 		public TransmissionUI transmissionUI;
 		public DictionaryUI dictionaryUI;
@@ -36,6 +37,8 @@ namespace HAM
 
 			sStaticChannel = staticChannel;
 			sPlayer = player;
+
+			successSound = Resources.Load ("sfx_success") as AudioClip;
 		}
 
 		void Update(){
@@ -60,6 +63,11 @@ namespace HAM
 
 		public static void UnlockAxis(string axis){
 			sPlayer.EnableAxis (axis);
+			PlaySuccessSound ();
+		}
+
+		public static void PlaySuccessSound(float volume = 0.25f){
+			AudioSource.PlayClipAtPoint(successSound, sPlayer.transform.position, volume);
 		}
 	}
 

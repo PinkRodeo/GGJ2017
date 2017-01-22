@@ -39,32 +39,27 @@ namespace RadioWaves
 
 			HAM.Game.midiController.AddNoteListener ("c#1", (bool pressed) => {
 				if (!pressed) return;
-				m_AudioSource.clip = notes[0];
-				m_AudioSource.Play ();
+				AudioSource.PlayClipAtPoint(notes[0], transform.position, 0.35f);
 			});
 
 			HAM.Game.midiController.AddNoteListener ("d#1", (bool pressed) => {
 				if (!pressed) return;
-				m_AudioSource.clip = notes[1];
-				m_AudioSource.Play ();
+				AudioSource.PlayClipAtPoint(notes[1], transform.position, 0.35f);
 			});
 
 			HAM.Game.midiController.AddNoteListener ("f#1", (bool pressed) => {
 				if (!pressed) return;
-				m_AudioSource.clip = notes[2];
-				m_AudioSource.Play ();
+				AudioSource.PlayClipAtPoint(notes[2], transform.position, 0.35f);
 			});
 
 			HAM.Game.midiController.AddNoteListener ("g#1", (bool pressed) => {
 				if (!pressed) return;
-				m_AudioSource.clip = notes[3];
-				m_AudioSource.Play ();
+				AudioSource.PlayClipAtPoint(notes[3], transform.position, 0.35f);
 			});
 
 			HAM.Game.midiController.AddNoteListener ("a#1", (bool pressed) => {
 				if (!pressed) return;
-				m_AudioSource.clip = notes[4];
-				m_AudioSource.Play ();
+				AudioSource.PlayClipAtPoint(notes[4], transform.position, 0.35f);
 			});
 		}
 
