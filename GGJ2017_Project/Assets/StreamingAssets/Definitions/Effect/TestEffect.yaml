@@ -60,7 +60,7 @@
   "EFFECT_INTROBOT_2":
     type: "TransmitTextEffect"
     params:
-      text: "Fellow airwave enthousiasts from around the world frequent these spaces. Use your basic tuner to tune in to the INFO-BOT for directions on where to find them.\nWe hope you enjoy your stay."
+      text: "Fellow airwave enthousiasts from around the world frequent these spaces. Use your AM tuner to tune in to the INFO-BOT for directions on where to find them.\nWe hope you enjoy your stay."
       onCompleteEffects:
         - EFFECT_UNLOCK_X
         - type: "AddWorldFlagEffect"
@@ -146,8 +146,8 @@
     type: "TransmitTextEffect"
     params:
       text: "Here's the frequency of our mutual Friend2.\n\nWhodis, will this work?"
-
-
+      onCompleteEffects:
+        - "EFFECT_UNLOCK_Z"
 
 
   "EFFECT_GABE_QUEUE":
@@ -202,5 +202,33 @@
       text: "Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf Arf."
       onCompleteEffects: 
         - "EFFECT_GABE_RETURN_TO_QUEUE"
+
+  "EFFECT_SNEAK_QUEUE":
+    type: "ConditionalEffect"
+    params:
+      conditions:
+        - type: "WorldFlagCondition"
+          params: {flag: "SNEAK_MET", operator: "NotEquals"}
+      effects:
+        - type: "TransmitTextEffect"
+          params:
+            text: "I really thought I'd be left alone here..........\n...\n....Bye"
+            onCompleteEffects:
+              - type: "AddWorldFlagEffect"
+                params: {flag: "SNEAK_MET"}
+              - "EFFECT_SNEAK_DONE"
+      elseEffects: 
+        - type: "TransmitTextEffect"
+          params:
+            text: "Stay away.\n...\n....Bye"
+            onCompleteEffects:
+              - "EFFECT_SNEAK_DONE"
+
+  "EFFECT_SNEAK_DONE":
+    type: "TransmitTextEffect"
+    params:
+      text: ""
+
+
 
 

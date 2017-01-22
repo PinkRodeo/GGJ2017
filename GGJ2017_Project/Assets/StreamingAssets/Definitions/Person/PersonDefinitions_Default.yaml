@@ -136,3 +136,12 @@
 
     onTuneRewards:
       - "EFFECT_GABE_QUEUE"
+
+
+  "PERSON_SNEAK":
+    voiceKey: "Crackle"
+    voiceVolume: 1.0
+    portraitKey: "Portrait_4"
+
+    onTuneRewards:
+      - "EFFECT_SNEAK_QUEUE"

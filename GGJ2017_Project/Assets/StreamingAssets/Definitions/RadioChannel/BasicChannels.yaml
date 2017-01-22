@@ -22,3 +22,7 @@
   "RC_GABE":
     channelName: "Never Forget"
     personDefinitionKey: "PERSON_GABE"
+
+  "RC_SNEAKY":
+    channelName: "Sneaky Channel"
+    personDefinitionKey: "PERSON_SNEAK"
