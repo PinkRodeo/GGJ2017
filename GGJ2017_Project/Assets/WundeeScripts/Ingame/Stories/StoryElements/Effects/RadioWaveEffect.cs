@@ -175,7 +175,7 @@ namespace Wundee.Stories
 		{
 			Debug.Log(_Axis);
 
-			GameObject.FindGameObjectWithTag(_Axis).transform.DOLocalMoveZ(-0.5546f, 0.5f);
+			GameObject.FindGameObjectWithTag(_Axis).transform.DOLocalMoveZ(-0.5546f, 0.5f).SetEase(Ease.OutBounce);
 
 			HAM.Game.UnlockAxis (_Axis);
 		}
