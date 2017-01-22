@@ -37,6 +37,11 @@ namespace RadioWaves
 
 			m_AudioSource = GetComponent<AudioSource>();
 
+			HAM.Game.midiController.AddKnobListener(74, OnKnobX);
+			HAM.Game.midiController.AddKnobListener(71, OnKnobY);
+			HAM.Game.midiController.AddKnobListener(79, OnKnobZ);
+			
+
 			HAM.Game.midiController.AddNoteListener ("c#1", (bool pressed) => {
 				if (!pressed) return;
 				AudioSource.PlayClipAtPoint(notes[0], transform.position, 0.35f);
@@ -61,20 +66,6 @@ namespace RadioWaves
 				if (!pressed) return;
 				AudioSource.PlayClipAtPoint(notes[4], transform.position, 0.35f);
 			});
-		}
-
-		public void EnableAxis(string axis){
-			switch (axis) {
-			case "x":
-				HAM.Game.midiController.AddKnobListener (74, OnKnobX);
-				break;
-			case "y":
-				HAM.Game.midiController.AddKnobListener (71, OnKnobY);
-				break;
-			case "z":
-				HAM.Game.midiController.AddKnobListener (79, OnKnobZ);
-				break;
-			}		
 		}
 
 		private void OnTriggerEnter(Collider p_Collider)

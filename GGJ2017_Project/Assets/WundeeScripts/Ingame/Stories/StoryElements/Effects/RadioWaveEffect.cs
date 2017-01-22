@@ -173,8 +173,31 @@ namespace Wundee.Stories
 
 		public override void ExecuteEffect()
 		{
+			Debug.Log(_Axis);
+
+			//GameObject.FindGameObjectWithTag(_Axis).SetActive(true);
+
 			HAM.Game.UnlockAxis (_Axis);
 		}
 	}
 
+
+	public class AddLocationEffect : Effect
+	{
+		private Vector3 _position;
+		public override void ParseParams(JsonData parameters)
+		{
+			float x = ContentHelper.ParseFloat(parameters, "x", 0f);
+			float y = ContentHelper.ParseFloat(parameters, "y", 0f);
+			float z = ContentHelper.ParseFloat(parameters, "z", 0f);
+
+			_position = new Vector3(x, y, z);
+		}
+
+		public override void ExecuteEffect()
+		{
+			HAM.Game.speechController.dictionaryUI.AddToDictionary(_position);
+
+		}
+	}
 }

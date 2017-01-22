@@ -195,8 +195,6 @@ public class MidiController {
 	void OnKnob(MidiJack.MidiChannel channel, int knobNumber, float knobValue){
 		int ii;
 
-		Debug.Log(knobNumber);
-
 		if (knobNumber == 1) {
 			knobNumber = 74;
 		}

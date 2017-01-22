@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: m_LineDial
+  m_Name: yPins
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -92,11 +92,8 @@ Material:
         name: _GlossyReflections
       second: 1
     - first:
-        name: _InvFade
-      second: 0.42
-    - first:
         name: _Metallic
-      second: 0
+      second: 1
     - first:
         name: _Mode
       second: 0
@@ -124,7 +121,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 1, g: 0.88174444, b: 0.2205882, a: 1}
+      second: {r: 0, g: 1, b: 0.13103461, a: 1}
     - first:
         name: _EmissionColor
-      second: {r: 1.872, g: 1.2312702, b: 0.031824037, a: 1}
+      second: {r: 0, g: 0.787, b: 0.10184701, a: 1}
