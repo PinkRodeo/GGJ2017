@@ -26,3 +26,7 @@
   "RC_SNEAKY":
     channelName: "Sneaky Channel"
     personDefinitionKey: "PERSON_SNEAK"
+
+  "RC_FRIEND2":
+    channelName: "Your Friend #2"
+    personDefinitionKey: "PERSON_FRIEND2"

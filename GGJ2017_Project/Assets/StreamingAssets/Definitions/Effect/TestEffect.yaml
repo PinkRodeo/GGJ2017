@@ -130,10 +130,9 @@
           params:
             comboDefinition: "COMBO_CONFIRM"
             effects:
-              - "EFFECT_CLEAR_COMBO"
               - type: "TransmitTextEffect"
                 params:
-                  text: "Won't you say <b>hello</b>?"
+                  text: "Won't you say hello?"
 
   "EFFECT_FR1_START_CONVERSATION_2":
     type: "TransmitTextEffect"
@@ -145,10 +144,11 @@
   "EFFECT_FR1_START_CONVERSATION_3":
     type: "TransmitTextEffect"
     params:
-      text: "Here's the frequency of our mutual Friend2.\n\nWhodis, will this work?"
+      text: "Here's the frequency of somebody our mutual friend.\n\nMaybe you can find him?"
       onCompleteEffects:
         - "EFFECT_UNLOCK_Z"
-
+        - type: AddLocationEffect
+          params: {x: 128, y: 128, z: 128}
 
   "EFFECT_GABE_QUEUE":
     type: "RandomEffect"

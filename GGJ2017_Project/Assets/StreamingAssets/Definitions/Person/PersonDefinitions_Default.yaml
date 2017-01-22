@@ -145,3 +145,15 @@
 
     onTuneRewards:
       - "EFFECT_SNEAK_QUEUE"
+
+
+  "PERSON_FRIEND2":
+    voiceKey: "Steb"
+    voiceVolume : "1.0"
+    portraitKey : "Portrait_3"
+
+    onTuneRewards:
+      - type: "TransmitTextEffect"
+        params:
+          text: "You found me!\n... ...\n...\nThat's all we got. Thanks for playing."
+          onConfirmEffects: []
