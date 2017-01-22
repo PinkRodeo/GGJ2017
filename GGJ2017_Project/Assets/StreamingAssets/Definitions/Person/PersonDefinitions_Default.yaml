@@ -56,7 +56,7 @@
                       params: {storyKey: "STORY_TEST_NOTHING"}
 
   "PERSON_INTROBOT":
-    voiceKey: "Robot"
+    voiceKey: "B"
 
     onStartRewards:
       - type: "AddComboToDictionaryEffect"

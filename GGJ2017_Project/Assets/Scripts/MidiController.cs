@@ -129,8 +129,6 @@ public class MidiController {
 		string name = NoteToString (noteNumber);
 		lastNotes.Add (name);
 
-		Debug.Log (comboListeners.Count);
-
 		int ii;
 		int jj;
 		for (ii = comboListeners.Count - 1; ii >= 0; ii--) {
