@@ -126,25 +126,6 @@ namespace RadioWaves
 			var localPos = transform.localPosition;
 			var speed = 20f;
 
-			if (Input.GetKey(KeyCode.A))
-			{
-				localPos.x += speed * Time.deltaTime;
-			}
-			if (Input.GetKey(KeyCode.D))
-			{
-				localPos.x -= speed * Time.deltaTime;
-			}
-
-
-			if (Input.GetKey(KeyCode.W))
-			{
-				localPos.z -= speed * Time.deltaTime;
-			}
-			if (Input.GetKey(KeyCode.S))
-			{
-				localPos.z += speed * Time.deltaTime;
-			}
-
 			transform.localPosition = localPos;
 		}
 
