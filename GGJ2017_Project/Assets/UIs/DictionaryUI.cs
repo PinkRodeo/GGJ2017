@@ -27,8 +27,8 @@ namespace HAM
 		private RectTransform m_DictionaryContentTransform;
 
 		public Dictionary<ComboDefinition, GameObject> m_DictionaryPanels = new Dictionary<ComboDefinition, GameObject>();
+		public Dictionary<Vector3, GameObject> m_PositionPanels = new Dictionary<Vector3, GameObject>();
 		public Dictionary<string[], GameObject> m_DictionaryPanelsByCombo = new Dictionary<string[], GameObject>();
-
 
 		public void SetVisible(bool p_IsVisible)
 		{
@@ -59,6 +59,7 @@ namespace HAM
 		{
 			m_MainPanel.localScale = new Vector3(0f,1f,1f);
 
+			AddToDictionary (new Vector3 (121, 76, 24));
 		}
 
 		protected void Start()
@@ -83,11 +84,13 @@ namespace HAM
 
 				for (int i = 0; i < p_ComboDefinition.combo.Length; i++)
 				{
+					string keyName = p_ComboDefinition.combo [i];
+					keyName = keyName.Substring (0, keyName.Length - 1);
 					if (i != 0)
-						panelContents += ", " + p_ComboDefinition.combo[i];
+						panelContents += ", " + keyName;
 					else
 					{
-						panelContents += p_ComboDefinition.combo[i];
+						panelContents += keyName;
 					}
 				}
 
@@ -101,6 +104,39 @@ namespace HAM
 				SetVisible(true);
 			}
 		}
+
+		public void AddToDictionary(Vector3 p_Position)
+		{
+			if (m_PositionPanels.ContainsKey(p_Position) == false)
+			{
+				var newDictionaryPanel = GameObject.Instantiate(m_DictionaryPanelPrefab, m_DictionaryContentTransform) as GameObject;
+				newDictionaryPanel.transform.localScale = Vector3.one;
+
+				var child = newDictionaryPanel.transform.GetChild(0);
+				var textComponent = child.GetComponent<Text>();
+
+				var channelPos = HAM.Game.PosToChannel (p_Position);
+
+				var panelContents = "";
+
+				if (p_Position.x >= 0) {
+					panelContents += "<color='red'>AM: " + channelPos.x + ". </color>";
+				}
+				if (p_Position.y >= 0) {
+					panelContents += "<color='blue'>MIX: " + channelPos.y + ". </color>";
+				}
+				if (p_Position.z >= 0) {
+					panelContents += "<color='orange'>WAVE: " + channelPos.z + ". </color>";
+				}
+
+				textComponent.text = panelContents;
+				m_PositionPanels.Add(p_Position, newDictionaryPanel);
+
+				HAM.Game.PlaySuccessSound();
+				SetVisible(true);
+			}
+		}
+
 
 		public void RemoveFromDictionary(ComboDefinition p_ComboDefinition)
 		{
