@@ -27,6 +27,8 @@ namespace HAM
 		private RectTransform m_DictionaryContentTransform;
 
 		public Dictionary<ComboDefinition, GameObject> m_DictionaryPanels = new Dictionary<ComboDefinition, GameObject>();
+		public Dictionary<string[], GameObject> m_DictionaryPanelsByCombo = new Dictionary<string[], GameObject>();
+
 
 		public void SetVisible(bool p_IsVisible)
 		{
@@ -93,6 +95,7 @@ namespace HAM
 
 				textComponent.text = panelContents;
 				m_DictionaryPanels.Add(p_ComboDefinition, newDictionaryPanel);
+				m_DictionaryPanelsByCombo.Add(p_ComboDefinition.combo, newDictionaryPanel);
 
 				HAM.Game.PlaySuccessSound();
 				SetVisible(true);
@@ -106,9 +109,28 @@ namespace HAM
 				m_DictionaryPanels.Remove(p_ComboDefinition);
 			}
 		}
+
+		public void OnComboPlayed(string[] p_PlayedCombo)
+		{
+			if (m_DictionaryPanelsByCombo.ContainsKey(p_PlayedCombo))
+			{
+				var uiPanel = m_DictionaryPanelsByCombo[p_PlayedCombo].GetComponent<Image>();
+
+				if (uiPanel == null)
+					return;
+				var oldColor = uiPanel.color;
+				;
+
+				uiPanel.DOColor(Color.yellow, 0.3f).OnComplete(() =>
+				{
+					uiPanel.DOColor(oldColor, 0.5f);
+				});
+			}
+		}
 		
 		protected void Update()
 		{
+		/*
 			if (Input.GetKeyDown(KeyCode.Z))
 			{
 				SetVisible(true);
@@ -118,6 +140,7 @@ namespace HAM
 			{
 				SetVisible(false);
 			}
+			*/
 		}
 		
 

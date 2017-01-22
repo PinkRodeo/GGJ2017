@@ -156,9 +156,10 @@ public class MidiController {
 
 			if (isComplete) 
 			{
+				HAM.Game.speechController.dictionaryUI.OnComboPlayed(listener.combo);
+
 				listener.callback ();
 				comboListeners.Remove(listener);
-
 			}
 		}
 
