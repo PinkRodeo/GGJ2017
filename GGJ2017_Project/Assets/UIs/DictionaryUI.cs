@@ -59,7 +59,7 @@ namespace HAM
 		{
 			m_MainPanel.localScale = new Vector3(0f,1f,1f);
 
-			AddToDictionary (new Vector3 (121, 76, 24));
+			//AddToDictionary (new Vector3 (121, 76, 24));
 		}
 
 		protected void Start()
