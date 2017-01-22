@@ -41,27 +41,32 @@ namespace RadioWaves
 			HAM.Game.midiController.AddKnobListener (71, OnKnobY);
 			HAM.Game.midiController.AddKnobListener (79, OnKnobZ);
 
-			HAM.Game.midiController.AddNoteListener ("c#1", () => {
+			HAM.Game.midiController.AddNoteListener ("c#1", (bool pressed) => {
+				if (!pressed) return;
 				m_AudioSource.clip = notes[0];
 				m_AudioSource.Play ();
 			});
 
-			HAM.Game.midiController.AddNoteListener ("d#1", () => {
+			HAM.Game.midiController.AddNoteListener ("d#1", (bool pressed) => {
+				if (!pressed) return;
 				m_AudioSource.clip = notes[1];
 				m_AudioSource.Play ();
 			});
 
-			HAM.Game.midiController.AddNoteListener ("f#1", () => {
+			HAM.Game.midiController.AddNoteListener ("f#1", (bool pressed) => {
+				if (!pressed) return;
 				m_AudioSource.clip = notes[2];
 				m_AudioSource.Play ();
 			});
 
-			HAM.Game.midiController.AddNoteListener ("g#1", () => {
+			HAM.Game.midiController.AddNoteListener ("g#1", (bool pressed) => {
+				if (!pressed) return;
 				m_AudioSource.clip = notes[3];
 				m_AudioSource.Play ();
 			});
 
-			HAM.Game.midiController.AddNoteListener ("a#1", () => {
+			HAM.Game.midiController.AddNoteListener ("a#1", (bool pressed) => {
+				if (!pressed) return;
 				m_AudioSource.clip = notes[4];
 				m_AudioSource.Play ();
 			});

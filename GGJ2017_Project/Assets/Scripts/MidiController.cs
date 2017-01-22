@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void ComboDelegate();
-public delegate void NoteDelegate();
+public delegate void NoteDelegate(bool pressed);
 public delegate void KnobDelegate(float value);
 
 public class ComboListener {
@@ -32,6 +32,7 @@ public class MidiController {
 	public MidiController () {
 		MidiJack.MidiMaster.knobDelegate = OnKnob;
 		MidiJack.MidiMaster.noteOnDelegate = OnNoteOn;
+		MidiJack.MidiMaster.noteOffDelegate = OnNoteOff;
 
 		lastNotes = new List<string> ();
 		comboListeners = new List<ComboListener> ();
@@ -111,7 +112,16 @@ public class MidiController {
 
 		for (ii = 0; ii < noteListeners.Count; ii++) {
 			if (noteListeners [ii].note == noteNumber) {
-				noteListeners [ii].callback ();
+				noteListeners [ii].callback (true);
+			}
+		}
+	}
+
+	void OnNoteOff(MidiJack.MidiChannel channel, int noteNumber){
+		int ii;
+		for (ii = 0; ii < noteListeners.Count; ii++) {
+			if (noteListeners [ii].note == noteNumber) {
+				noteListeners [ii].callback (false);
 			}
 		}
 	}
