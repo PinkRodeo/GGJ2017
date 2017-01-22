@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: m_LineDial
+  m_Name: m_CdPlayer_Em_Orange
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -87,16 +87,13 @@ Material:
       second: 1
     - first:
         name: _Glossiness
-      second: 0.5
+      second: 0.522
     - first:
         name: _GlossyReflections
       second: 1
     - first:
-        name: _InvFade
-      second: 0.42
-    - first:
         name: _Metallic
-      second: 0
+      second: 0.088
     - first:
         name: _Mode
       second: 0
@@ -124,7 +121,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
+      second: {r: 1, g: 0.58113587, b: 0.13235295, a: 1}
     - first:
         name: _EmissionColor
-      second: {r: 1.872, g: 1.1359293, b: 0.031824037, a: 1}
+      second: {r: 1.959, g: 1.1369882, b: 0.26119998, a: 1}
