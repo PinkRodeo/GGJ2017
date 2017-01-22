@@ -1,6 +1,7 @@
 ---
   "PERSON_DEFAULT":
     voiceKey : "A"
+    voiceVolume : "1.0"
     portraitKey : "Portrait_1"
 
     onStartRewards:
@@ -23,7 +24,7 @@
                 effects: 
                   - type: "TransmitTextEffect"
                     params: 
-                    text: "I am really glad to have someone to talk to."
+                      text: "I am really glad to have someone to talk to."
                
           onBreakoffEffects: 
             - type: "PrintEffect"
@@ -31,6 +32,7 @@
 
   "PERSON_DEFAULT_01":
     voiceKey : "A"
+    voiceVolume : "1.0"
 
     onStartRewards:
       - type: "PrintEffect"
@@ -57,19 +59,23 @@
 
   "PERSON_INTROBOT":
     voiceKey: "Robot"
-
-    onStartRewards:
-      - type: "AddComboToDictionaryEffect"
-        params: 
-          comboDefinitionKey: "COMBO_CONFIRM"
+    voiceVolume : "0.3"
 
     onTuneRewards:
       - "EFFECT_INTROBOT_1"
+      - type: "WaitForCombo"
+        params: 
+          comboDefinition: "COMBO_CHEAT"
+          effects:
+            - "EFFECT_UNLOCK_X"
+            - "EFFECT_UNLOCK_Y"
+            - "EFFECT_UNLOCK_Z"
 
 
 
   "PERSON_INFO_BOT":
     voiceKey: "Robot"
+    voiceVolume : "0.3"
 
     onTuneRewards:
       - type: "ConditionalEffect"
@@ -94,6 +100,7 @@
 
   "PERSON_FRIEND1":
     voiceKey: "B"
+    voiceVolume : "1.0"
 
 
     onTuneRewards:

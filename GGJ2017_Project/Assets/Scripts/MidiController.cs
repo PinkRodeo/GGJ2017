@@ -29,6 +29,9 @@ public class MidiController {
 	List<KnobListener> knobListeners;
 
 
+	List<int> disabledKnobs;
+
+
 	float knobX = 0.0f;
 	float knobY = 0.0f;
 	float knobZ = 0.0f;
@@ -43,6 +46,8 @@ public class MidiController {
 		comboListeners = new List<ComboListener> ();
 		noteListeners = new List<NoteListener> ();
 		knobListeners = new List<KnobListener> ();
+
+		disabledKnobs = new List<int> ();
 	}
 
 	public void Update(){
@@ -129,8 +134,6 @@ public class MidiController {
 		string name = NoteToString (noteNumber);
 		lastNotes.Add (name);
 
-		Debug.Log (comboListeners.Count);
-
 		int ii;
 		int jj;
 		for (ii = comboListeners.Count - 1; ii >= 0; ii--) {
@@ -190,6 +193,19 @@ public class MidiController {
 
 	void OnKnob(MidiJack.MidiChannel channel, int knobNumber, float knobValue){
 		int ii;
+
+		if (knobNumber == 1) {
+			knobNumber = 74;
+		}
+
+		if (knobNumber == 81) {
+			knobNumber = 79;
+		}
+
+		if (disabledKnobs.Contains (knobNumber)) {
+			return;
+		}
+
 		for (ii = 0; ii < knobListeners.Count; ii++) {
 			if (knobListeners [ii].knobNumber == knobNumber) {
 				knobListeners [ii].callback (knobValue);
@@ -220,5 +236,17 @@ public class MidiController {
 			}
 		}
 		return ii + (number-1)*12 + 48;
+	}
+
+	public void DisableKnob(int number){
+		if (!disabledKnobs.Contains (number)) {
+			disabledKnobs.Add (number);
+		}
+	}
+
+	public void EnableKnob(int number){
+		if (disabledKnobs.Contains (number)) {
+			disabledKnobs.Remove (number);
+		}
 	}
 }

@@ -40,6 +40,10 @@
     params:
       text: "Welcome to the H.A.M. network."
       onCompleteEffects:
+        - type: "AddComboToDictionaryEffect"
+          params: 
+            comboDefinitionKey: "COMBO_CONFIRM"
+      onConfirmEffects:
         - "EFFECT_INTROBOT_2"
 
 
@@ -47,7 +51,7 @@
     type: "TransmitTextEffect"
     params:
       text: "We hope you enjoy your stay."
-      onCompleteEffects:
+      onConfirmEffects:
         - EFFECT_UNLOCK_X
 
 ## INFO BOT ##
@@ -73,7 +77,7 @@
         - type: "TransmitTextEffect"
           params:
             text: "Friend 1 is still sad..."
-            onCompleteEffects:
+            onConfirmEffects:
               - "EFFECT_INFO_BOT_QUEUE"
       elseEffects: ["EFFECT_INFO_BOT_RETURN_TO_QUEUE"]
 
@@ -104,7 +108,7 @@
     type: "TransmitTextEffect"
     params:
       text: "It's so nice to finally talk to a friendly face. So many people on here are so depressing."
-      onCompleteEffects:
+      onConfirmEffects:
         - "EFFECT_FR1_START_CONVERSATION_3"
 
   "EFFECT_FR1_START_CONVERSATION_3":

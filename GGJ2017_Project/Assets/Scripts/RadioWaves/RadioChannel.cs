@@ -68,6 +68,7 @@ namespace RadioWaves
 		{
 			Wundee.Game.instance.definitions.radioChannelDefinitions[DefinitionKey].MakeConcreteType(this);
 			m_AudioClips = p_Person.GetAudioClips ();
+			m_AudioSource.volume = p_Person.GetAudioVolume ();
 		}
 
 		// Update is called once per frame

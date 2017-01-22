@@ -12,6 +12,7 @@ namespace Wundee
 		public Definition<Effect>[] _onTuneInRewardDefinitions;
 
 		public string voiceType;
+		public float voiceVolume;
 
 		public string portraitKey;
 
@@ -24,7 +25,7 @@ namespace Wundee
 			var keys = jsonData.Keys;
 
 			portraitKey = ContentHelper.ParseString(jsonData, D.PORTRAITKEY, "Portrait_1");
-
+			voiceVolume = ContentHelper.ParseFloat (jsonData, "voiceVolume", 1.0f);
 
 			if (keys.Contains(D.REWARDS_ON_START))
 				this._onStartRewardDefinitions = EffectDefinition.ParseDefinitions(jsonData[D.REWARDS_ON_START], definitionKey);

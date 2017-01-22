@@ -15,6 +15,7 @@ namespace HAM
 
 		private static AudioSource sStaticChannel;
 		private static RadioWaves.PlayerTuner sPlayer;
+		private static AudioClip successSound;
 		
 		public TransmissionUI transmissionUI;
 		public DictionaryUI dictionaryUI;
@@ -36,6 +37,12 @@ namespace HAM
 
 			sStaticChannel = staticChannel;
 			sPlayer = player;
+
+			successSound = Resources.Load ("sfx_success") as AudioClip;
+
+			HAM.Game.LockAxis ("x");
+			HAM.Game.LockAxis ("y");
+			HAM.Game.LockAxis ("z");
 		}
 
 		void Update(){
@@ -58,8 +65,36 @@ namespace HAM
 			sStaticChannel.volume = volume;
 		}
 
+		public static void LockAxis(string axis){
+			int knob = 1;
+			if (axis == "x") knob = 74;
+			if (axis == "y") knob = 71;
+			if (axis == "z") knob = 79;
+			midiController.DisableKnob (knob);
+			PlaySuccessSound ();
+		}
+
 		public static void UnlockAxis(string axis){
-			sPlayer.EnableAxis (axis);
+			int knob = 1;
+			if (axis == "x") knob = 74;
+			if (axis == "y") knob = 71;
+			if (axis == "z") knob = 79;
+			midiController.EnableKnob (knob);
+			PlaySuccessSound ();
+		}
+
+		public static void PlaySuccessSound(float volume = 0.25f){
+			AudioSource.PlayClipAtPoint(successSound, sPlayer.transform.position, volume);
+		}
+
+
+		public static Vector3 PosToChannel(Vector3 pos){
+			Vector3 channel = new Vector3 ();
+			channel.x = Mathf.Round ((pos.x / 127) * (170 - 54) + 54);
+			channel.y = Mathf.Round ((pos.y / 127) * (100));
+			channel.z = Mathf.Round ((pos.z / 127) * (214 - 27) + 27);
+
+			return channel;
 		}
 	}
 
