@@ -32,6 +32,9 @@
     type: "UnlockAxisEffect"
     params: "z"
 
+  "EFFECT_CLEAR_COMBO":
+    type: "ClearCombosEffect"
+    params: {}
 
 ## INTRO BOT ##
 
@@ -84,6 +87,9 @@
         - type: "TransmitTextEffect"
           params:
             text: "Friend 1 is still sad..."
+            onCompleteEffects:
+              - type: AddLocationEffect
+                params: {x: 45.2, y: -1, z: -1}
             onConfirmEffects:
               - "EFFECT_INFO_BOT_QUEUE"
       elseEffects: ["EFFECT_INFO_BOT_RETURN_TO_QUEUE"]
@@ -94,7 +100,7 @@
   "EFFECT_FR1_START_CONVERSATION_1":
     type: "TransmitTextEffect"
     params:
-      text: "<b>Hello</b> it's me, who are you?"
+      text: "Hello it's me, who are you?"
       onCompleteEffects:
         - type: "AddComboToDictionaryEffect"
           params: {comboDefinitionKey: "COMBO_SAY_HELLO"}
@@ -103,10 +109,12 @@
             comboDefinition: "COMBO_SAY_HELLO"
             effects: 
               - "EFFECT_FR1_START_CONVERSATION_2"
+              - "EFFECT_CLEAR_COMBO"
         - type: "WaitForCombo"
           params:
             comboDefinition: "COMBO_CONFIRM"
             effects:
+              - "EFFECT_CLEAR_COMBO"
               - type: "TransmitTextEffect"
                 params:
                   text: "Won't you say <b>hello</b>?"

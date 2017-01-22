@@ -60,6 +60,7 @@
   "PERSON_INTROBOT":
     voiceKey: "Robot"
     voiceVolume : "0.3"
+    portraitKey : "Portrait_1"
 
     onTuneRewards:
       - "EFFECT_INTROBOT_1"
@@ -76,6 +77,7 @@
   "PERSON_INFO_BOT":
     voiceKey: "Robot"
     voiceVolume : "0.3"
+    portraitKey : "Portrait_1"
 
     onTuneRewards:
       - type: "ConditionalEffect"
@@ -99,8 +101,9 @@
 
 
   "PERSON_FRIEND1":
-    voiceKey: "B"
+    voiceKey: "Bored"
     voiceVolume : "1.0"
+    portraitKey : "Portrait_1"
 
 
     onTuneRewards:

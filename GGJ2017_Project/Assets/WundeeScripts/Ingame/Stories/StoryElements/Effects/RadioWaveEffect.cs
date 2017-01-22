@@ -201,4 +201,16 @@ namespace Wundee.Stories
 
 		}
 	}
+
+	public class ClearCombosEffect : Effect
+	{
+		public override void ParseParams(JsonData parameters)
+		{
+		}
+
+		public override void ExecuteEffect()
+		{
+			HAM.Game.midiController.ClearComboListeners();
+		}
+	}
 }
