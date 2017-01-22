@@ -45,15 +45,11 @@
     params: 
       effects:
       - EFFECT_INFO_BOT_Q1
-      - type: "NullEffect"
-        params: {storyKey: "STORY_TEST_3"}
-      - type: "NullEffect"
-        params: {storyKey: "STORY_TEST_NOTHING"}
-
+ 
   "EFFECT_INFO_BOT_RETURN_TO_QUEUE":
-    type: "RandomEffect"
+    type: "BreakLoopEffect"
     params:
-      effecs:
+      effects:
         - "EFFECT_INFO_BOT_QUEUE"
 
   "EFFECT_INFO_BOT_Q1":

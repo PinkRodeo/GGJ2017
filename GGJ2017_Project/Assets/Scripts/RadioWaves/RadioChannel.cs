@@ -100,11 +100,14 @@ namespace RadioWaves
 			connected = false;
 			tunedIn = true;
 			inTuneTimer = 0.0f;
+
+
 		}
 
 		public void TuneOut()
 		{
 			tunedIn = false;
+			HAM.Game.midiController.ClearComboListeners();
 		}
 	}
 }

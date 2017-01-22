@@ -141,6 +141,36 @@ namespace Wundee.Stories
 		}
 	}
 
+	public class BreakLoopEffect : Effect
+	{
+		protected Definition<Effect>[] _effectDefinitions;
+		public BreakLoopEffect original;
+		
+
+
+		public override void ParseParams(JsonData parameters)
+		{
+			_effectDefinitions = EffectDefinition.ParseDefinitions(parameters[D.EFFECTS], definition.definitionKey);
+		}
+
+		public override void ExecuteEffect()
+		{
+			var effects = original._effectDefinitions.GetConcreteTypes(parentStoryNode);
+			effects.ExecuteEffects();
+		}
+
+		public override Effect GetClone(StoryNode parent)
+		{
+			var clone =  base.GetClone(parent) as BreakLoopEffect;
+
+			clone.original = this;
+
+			return clone;
+		}
+
+		
+	}
+
 	public class RandomEffect : CollectionEffect
 	{
 		public override void ParseParams(JsonData parameters)
@@ -160,7 +190,11 @@ namespace Wundee.Stories
 
 		public override void ExecuteEffect()
 		{
+			Logger.Log(effects.Length);
+
 			var randomNumber = R.Content.Next(effects.Length);
+			Logger.Log(randomNumber);
+
 			effects[randomNumber].ExecuteEffect();
 		}
 	}

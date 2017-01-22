@@ -10,3 +10,7 @@
 
     personDefinitionKey: "PERSON_INTROBOT"
 
+  "RC_INFO_BOT_STATION":
+    channelName: "The info station"
+
+    personDefinitionKey: "PERSON_INFO_BOT"
