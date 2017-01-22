@@ -1,6 +1,6 @@
 ---
   "COMBO_CONFIRM":
-    combo: ["c#1", "d#1"]
+    combo: ["c#1", "c#1"]
     meaning: "Uh-Huh"
 
   "COMBO_SAY_HELLO":

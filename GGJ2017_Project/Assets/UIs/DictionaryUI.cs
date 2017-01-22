@@ -93,6 +93,9 @@ namespace HAM
 
 				textComponent.text = panelContents;
 				m_DictionaryPanels.Add(p_ComboDefinition, newDictionaryPanel);
+
+				HAM.Game.PlaySuccessSound();
+				SetVisible(true);
 			}
 		}
 
