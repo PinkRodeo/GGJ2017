@@ -144,7 +144,7 @@
   "EFFECT_FR1_START_CONVERSATION_3":
     type: "TransmitTextEffect"
     params:
-      text: "Here's the frequency of somebody our mutual friend.\n\nMaybe you can find him?"
+      text: "Here's the frequency of somebody; our mutual friend.\n\nMaybe you can find him?"
       onCompleteEffects:
         - "EFFECT_UNLOCK_Z"
         - type: AddLocationEffect

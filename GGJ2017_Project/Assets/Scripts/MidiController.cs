@@ -52,26 +52,13 @@ public class MidiController {
 
 	public void Update(){
 		//for debug porpoises
-		if (Input.GetKeyDown(KeyCode.Z)){
-			OnNoteOn (MidiJack.MidiChannel.All, 48, 1);
-		}
-		if (Input.GetKeyDown(KeyCode.X)){
-			OnNoteOn (MidiJack.MidiChannel.All, 49, 1);
-		}
-		if (Input.GetKeyDown(KeyCode.C)){
-			OnNoteOn (MidiJack.MidiChannel.All, 51, 1);
-		}
-		if (Input.GetKeyDown(KeyCode.V)){
-			OnNoteOn (MidiJack.MidiChannel.All, 54, 1);
-		}
-		if (Input.GetKeyDown(KeyCode.B)){
-			OnNoteOn (MidiJack.MidiChannel.All, 56, 1);
-		}
-		if (Input.GetKeyDown(KeyCode.N)){
-			OnNoteOn (MidiJack.MidiChannel.All, 58, 1);
-		}
-
-
+		CheckKeyboardKey(KeyCode.Z, 48);
+		CheckKeyboardKey(KeyCode.X, 49);
+		CheckKeyboardKey(KeyCode.C, 51);
+		CheckKeyboardKey(KeyCode.V, 54);
+		CheckKeyboardKey(KeyCode.B, 56);
+		CheckKeyboardKey(KeyCode.N, 58);
+		
 		if (Input.GetKey(KeyCode.Q)){
 			knobX += 1f / 96f;
 			knobX = Mathf.Min (1, knobX);
@@ -103,6 +90,18 @@ public class MidiController {
 			knobZ -= 1f / 96f;
 			knobZ = Mathf.Max (0, knobZ);
 			OnKnob (MidiJack.MidiChannel.All, 79, knobZ);
+		}
+	}
+
+	private void CheckKeyboardKey(KeyCode p_KeyCode, int noteIndex)
+	{
+		if (Input.GetKeyDown(p_KeyCode))
+		{
+			OnNoteOn(MidiJack.MidiChannel.All, noteIndex, 1f);
+		}
+		if (Input.GetKeyUp(p_KeyCode))
+		{
+			OnNoteOff(MidiJack.MidiChannel.All, noteIndex);
 		}
 	}
 
