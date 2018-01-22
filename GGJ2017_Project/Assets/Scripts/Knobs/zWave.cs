@@ -13,11 +13,11 @@ public class zWave : MonoBehaviour {
 	void Start () {
 		trail = gameObject.GetComponent<LineRenderer> ();
 
-		trail.numPositions = 32;
+		trail.positionCount = 32;
 
 		int ii = 0;
-		for (ii = 0; ii < trail.numPositions; ii++) {
-			trail.SetPosition (ii, new Vector3 (ii * (1.0f / (trail.numPositions-1)), 0, 0));
+		for (ii = 0; ii < trail.positionCount; ii++) {
+			trail.SetPosition (ii, new Vector3 (ii * (1.0f / (trail.positionCount-1)), 0, 0));
 		}
 
 		HAM.Game.midiController.AddKnobListener (79, OnKnob);
@@ -28,7 +28,7 @@ public class zWave : MonoBehaviour {
 		phase += Time.deltaTime * speed;
 
 		int ii;
-		for (ii = trail.numPositions -1; ii > 0; ii--) {
+		for (ii = trail.positionCount -1; ii > 0; ii--) {
 			float nextY = trail.GetPosition (ii - 1).y;
 			Vector3 nextPos = trail.GetPosition (ii);
 			nextPos.y = nextY;
